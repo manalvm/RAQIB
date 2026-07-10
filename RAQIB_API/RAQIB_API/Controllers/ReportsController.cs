@@ -77,12 +77,9 @@ public class ReportsController : ControllerBase
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"AI Agent error: {ex.Message}");
-            prediction = new AiPredictionDto(
-                "UNKNOWN", "غير معروف", 0, 0, 0, 0,
-                "تعذر تحليل الصورة حالياً، سيتم المراجعة يدوياً.", new(), new());
+              Console.WriteLine(ex.ToString());
+             throw;
         }
-
         // 3. بناء الـ initial chat history
         var initialHistory = new List<ChatMessageDto>
         {

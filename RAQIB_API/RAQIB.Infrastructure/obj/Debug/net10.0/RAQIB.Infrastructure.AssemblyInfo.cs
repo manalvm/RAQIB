@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RAQIB.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+da2c255b483f51e18980430b64f4dad30c229ea4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dc1d65a539bda79d6807edcc3f76b0cc614daf12")]
 [assembly: System.Reflection.AssemblyProductAttribute("RAQIB.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RAQIB.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
