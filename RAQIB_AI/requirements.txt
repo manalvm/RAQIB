@@ -3,8 +3,9 @@ uvicorn
 python-multipart
 tensorflow
 numpy
-opencv-python
 pillow
 openai
 python-dotenv
 pydantic
+gunicorn
+opencv-python-headless
