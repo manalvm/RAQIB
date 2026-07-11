@@ -6,7 +6,7 @@ import tensorflow as tf
 import numpy as np
 import cv2
 from PIL import Image
-
+import time
 
 # ===========================
 # Configuration
@@ -29,6 +29,22 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 print("Before loading model...")
 model = tf.keras.models.load_model(MODEL_PATH)
 print("Model loaded successfully!")
+
+# ===========================
+# Model warm-up
+# ===========================
+# tf.keras.models.load_model() only deserializes the weights - it does NOT
+# build/trace the compute graph or finish XLA/cuDNN initialization. That
+# happens lazily on the FIRST call to model.predict(), which is exactly why
+# the first real prediction was taking 80+ seconds and blowing past the
+# .NET HttpClient's 60s timeout. Running one dummy prediction here, at
+# module import time (i.e. once, when the FastAPI process starts), pays
+# that one-time cost during startup instead of during a user's request.
+print("Warming up model...")
+_warmup_start = time.time()
+_warmup_input = np.zeros((1, IMG_SIZE[0], IMG_SIZE[1], 3), dtype="float32")
+model.predict(_warmup_input, verbose=0)
+print(f"Model warm-up complete in {time.time() - _warmup_start:.2f} seconds")
 
 
 def resolve_path(image_path: str | os.PathLike) -> str:
@@ -361,11 +377,15 @@ def analyze_trash(image_path):
 # ===========================
 
 def predict_image(image_path):
+    start = time.time()
 
     resolved_path = resolve_path(image_path)
     image = preprocess_image(resolved_path)
 
     probabilities = model.predict(image, verbose=0)[0]
+
+    print(f"Prediction took {time.time() - start:.2f} seconds")
+
 
     predicted_index = np.argmax(probabilities)
 

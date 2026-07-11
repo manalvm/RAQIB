@@ -9,7 +9,7 @@ public interface IReportRepository
     Task<Report?> GetByIdAsync(int id);
     Task<IEnumerable<Report>> GetByUserIdAsync(string userId);
     Task<IEnumerable<Report>> GetAllAsync();
-    Task<IEnumerable<MapPointDto>> GetMapPointsAsync();
+    Task<IEnumerable<MapPointDto>> GetMapPointsAsync(string? userId = null);
     Task<DashboardStatsDto> GetDashboardStatsAsync();
     Task UpdateAsync(Report report);
     Task<int> GetReportCountInAreaAsync(double lat, double lng, double radiusKm = 0.5);

@@ -32,6 +32,9 @@ namespace RAQIB_API
                 opts.Password.RequiredLength = 8;
                 opts.Password.RequireNonAlphanumeric = false;
                 opts.User.RequireUniqueEmail = true;
+                opts.Lockout.MaxFailedAccessAttempts = 5;
+                opts.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                opts.Lockout.AllowedForNewUsers = true;
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
@@ -96,7 +99,9 @@ namespace RAQIB_API
                     client.BaseAddress = new Uri(baseUrl);
                 }
 
-                client.Timeout = TimeSpan.FromSeconds(60);
+                // كان 60 ثانية؛ زودناها كهامش أمان إضافي بعد تسريع الـ FastAPI
+                // (warm-up + threadpool offload)، مش لأنها المشكلة الأساسية
+                client.Timeout = TimeSpan.FromSeconds(90);
             });
 
             // ── SignalR ──────────────────────────────────────────────────

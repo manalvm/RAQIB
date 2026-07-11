@@ -43,15 +43,28 @@ def home():
 
 
 @app.post("/predict")
-async def predict(file: UploadFile = File(...)):
-
+def predict(file: UploadFile = File(...)):
+    # NOTE: this is a plain `def` route, not `async def`.
+    # predict_image() (and everything it calls - cv2.imread, model.predict,
+    # the OpenCV analysis functions) is fully synchronous/CPU-bound and never
+    # awaits anything. If this route were `async def`, that work would run
+    # directly on FastAPI's single event-loop thread and block every other
+    # in-flight request for the full duration of the prediction - which is
+    # what caused requests to appear to "hang". A plain `def` route is
+    # automatically dispatched by FastAPI/Starlette to a worker thread pool,
+    # so the event loop stays free and multiple predictions can run
+    # concurrently (TensorFlow/OpenCV release the GIL during their C++ work).
     file_path = os.path.join(UPLOAD_FOLDER, file.filename)
 
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    result = predict_image(file_path)
-
-    os.remove(file_path)
+    try:
+        result = predict_image(file_path)
+    finally:
+        # always clean up the temp upload, even if prediction raises,
+        # so failed requests don't leak files into the uploads folder
+        if os.path.exists(file_path):
+            os.remove(file_path)
 
     return result

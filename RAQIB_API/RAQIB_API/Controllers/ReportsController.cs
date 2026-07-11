@@ -75,10 +75,18 @@ public class ReportsController : ControllerBase
             using var aiStream = image.OpenReadStream();
             prediction = await _ai.PredictAsync(aiStream, image.FileName);
         }
+        catch (TaskCanceledException ex)
+        {
+            // الـ HttpClient.Timeout انتهى قبل ما الـ FastAPI يرد
+            Console.WriteLine($"AI prediction timed out: {ex}");
+            _storage.DeleteImage(imagePath); // تنظيف الصورة اللي اتحفظت بدون ما تتحلل
+            return StatusCode(504, "تعذر تحليل الصورة، الخدمة استغرقت وقتاً طويلاً. حاول مرة أخرى.");
+        }
         catch (Exception ex)
         {
-              Console.WriteLine(ex.ToString());
-             throw;
+            Console.WriteLine(ex.ToString());
+            _storage.DeleteImage(imagePath); // تنظيف الصورة اللي اتحفظت بدون ما تتحلل
+            return StatusCode(502, "حدث خطأ أثناء تحليل الصورة.");
         }
         // 3. بناء الـ initial chat history
         var initialHistory = new List<ChatMessageDto>
@@ -128,10 +136,13 @@ public class ReportsController : ControllerBase
         };
         await _notify.SendAiReplyAsync(userId, replyPayload);
 
-        // 6. تحديث الخريطة للكل
+        // 6. تحديث الخريطة للكل (اليوزر والأدمن كلهم متصلين على نفس الـ hub؛
+        // بنبعت الـ UserId في الـ payload عشان الفرونت يقدر يفلتر ويعرض
+        // البلاغ ده بس لو هو صاحبه، أو لو الشخص أدمن)
         await _notify.BroadcastMapUpdateAsync(new
         {
             report.Id,
+            report.UserId,
             report.Latitude,
             report.Longitude,
             prediction.PredictedClass,
@@ -253,11 +264,19 @@ public class ReportsController : ControllerBase
     }
 
     // ── GET /api/reports/map ─────────────────────────────────
+    // الأدمن بيشوف كل البلاغات على الخريطة، اليوزر العادي بيشوف بلاغاته هو بس
     [HttpGet("map")]
     public async Task<IActionResult> GetMapPoints()
     {
-        var points = await _repo.GetMapPointsAsync();
-        return Ok(points);
+        if (User.IsInRole("Admin"))
+        {
+            var all = await _repo.GetMapPointsAsync();
+            return Ok(all);
+        }
+
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
+        var mine = await _repo.GetMapPointsAsync(userId);
+        return Ok(mine);
     }
 
     // ── GET /api/reports/{id} ────────────────────────────────

@@ -250,8 +250,8 @@ namespace RAQIB.Infrastructure.Migrations
 
                     b.Property<string>("Message")
                         .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<int?>("ReportId")
                         .HasColumnType("int");
@@ -274,9 +274,7 @@ namespace RAQIB.Infrastructure.Migrations
 
                     b.HasIndex("CreatedAt");
 
-                    b.HasIndex("IsRead");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "IsRead");
 
                     b.ToTable("Notifications");
                 });

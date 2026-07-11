@@ -197,6 +197,10 @@ export default function VerifyOtpPage() {
           justify-content: center;
           gap: 10px;
           margin-bottom: 24px;
+          /* Keep the code boxes left-to-right even though the page around
+             them is RTL — a verification code is always read/typed LTR. */
+          direction: ltr;
+          unicode-bidi: isolate;
         }
         .otp-input {
           width: 46px;
@@ -212,6 +216,8 @@ export default function VerifyOtpPage() {
           outline: none;
           transition: border-color 0.15s ease, box-shadow 0.15s ease;
           box-sizing: border-box;
+          direction: ltr;
+          unicode-bidi: plaintext;
         }
         .otp-input.filled {
           border-color: var(--orange);
@@ -294,7 +300,7 @@ export default function VerifyOtpPage() {
             <p className="card-sub">أدخل الكود المكون من 6 أرقام الذي أرسلناه إلى</p>
             <p className="card-email">{email}</p>
 
-            <div className="otp-row" onPaste={handlePaste}>
+            <div className="otp-row" dir="ltr" onPaste={handlePaste}>
               {otp.map((digit, i) => (
                 <input
                   key={i}

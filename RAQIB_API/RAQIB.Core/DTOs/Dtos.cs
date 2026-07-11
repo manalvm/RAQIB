@@ -9,6 +9,10 @@ public record AuthResultDto(string Token, string UserId, string FullName, string
 public record VerifyOtpDto(string UserId, string Otp);
 public record ResendOtpDto(string Email);
 
+// ── Google OAuth (NEW) ───────────────────────────────────────
+public record GoogleLoginDto(string IdToken);
+public record CompleteGoogleSignupDto(string Ticket, string Password);
+
 // ── Report Create ─────────────────────────────────────────────
 public record CreateReportDto(
     string Message,

@@ -1,14 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../services/AuthContext";
 
 export default function LoginPage() {
-  const { login } = useAuth();
+  const { login, loginWithGoogle } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [focused, setFocused] = useState(null);
+  const googleBtnRef = useRef(null);
+
+  // ── NEW: Google Sign-In button (Task 3) ──
+  useEffect(() => {
+    const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+    if (!clientId) return;
+
+    const renderButton = () => {
+      if (!window.google || !googleBtnRef.current) return;
+      window.google.accounts.id.initialize({
+        client_id: clientId,
+        callback: handleGoogleCredential,
+      });
+      window.google.accounts.id.renderButton(googleBtnRef.current, {
+        theme: "outline",
+        size: "large",
+        shape: "pill",
+        text: "continue_with",
+        width: 360,
+        locale: "ar",
+      });
+    };
+
+    if (window.google) {
+      renderButton();
+    } else {
+      const script = document.createElement("script");
+      script.src = "https://accounts.google.com/gsi/client";
+      script.async = true;
+      script.defer = true;
+      script.onload = renderButton;
+      document.body.appendChild(script);
+    }
+  }, []);
+
+  const handleGoogleCredential = async (response) => {
+    setError("");
+    setLoading(true);
+    try {
+      const data = await loginWithGoogle(response.credential);
+      if (data.requiresPasswordSetup) {
+        const params = new URLSearchParams({ ticket: data.ticket, email: data.email || "" });
+        navigate(`/set-google-password?${params.toString()}`);
+        return;
+      }
+      navigate(data.role === "Admin" ? "/admin" : "/dashboard");
+    } catch (err) {
+      setError(err.message || "تعذر تسجيل الدخول عبر Google");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handle = async (e) => {
     e.preventDefault();
@@ -366,6 +418,17 @@ export default function LoginPage() {
                 {loading ? "جارٍ التحقق..." : "دخول"}
               </button>
             </form>
+
+            {import.meta.env.VITE_GOOGLE_CLIENT_ID && (
+              <>
+                <div style={{ display: "flex", alignItems: "center", gap: 12, margin: "20px 0" }}>
+                  <div style={{ flex: 1, height: 1, background: "rgba(200,205,214,0.2)" }} />
+                  <span style={{ fontSize: 12, color: "var(--gray)" }}>أو</span>
+                  <div style={{ flex: 1, height: 1, background: "rgba(200,205,214,0.2)" }} />
+                </div>
+                <div ref={googleBtnRef} style={{ display: "flex", justifyContent: "center" }} />
+              </>
+            )}
 
             <p className="switch-line">
               ليس لديك حساب؟ <Link to="/register">إنشاء حساب جديد</Link>

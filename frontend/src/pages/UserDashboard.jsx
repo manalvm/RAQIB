@@ -57,10 +57,16 @@ function FlyTo({ target }) {
 }
 
 // ── Geocoding helpers ─────────────────────────────────────────
+
+// صندوق إحداثيات يغطي جمهورية مصر العربية بالكامل (left, top, right, bottom)
+// بيتستخدم مع bounded=1 عشان نتايج البحث تتقيد بمصر فعلياً بدل ما تشتت
+// لنتايج بعيدة، وده بيحسّن دقة الترتيب (relevance) للنتايج القريبة.
+const EGYPT_VIEWBOX = "24.6,31.9,37.0,21.9";
+
 async function reverseGeocode(lat, lng) {
   try {
     const res = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=ar`,
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=ar&zoom=18&addressdetails=1`,
       { headers: { "Accept-Language": "ar" } }
     );
     const data = await res.json();
@@ -73,14 +79,35 @@ async function reverseGeocode(lat, lng) {
   } catch { return {}; }
 }
 
+// بحث نصي (forward geocoding) بتغطية أفضل لمصر:
+// Nominatim (OpenStreetMap) بيبقى ناقص بيانات لشوارع كتير في مصر لأنه
+// مصدره بيانات تطوعية (crowd-sourced)، ده حد من حدود مصدر البيانات نفسه
+// مش حاجة نقدر نصلّحها بالكامل من الكود. اللي بنقدر نعمله هو نحسّن طريقة
+// البحث عشان نلتقط أكبر عدد ممكن من النتايج المتاحة فعلاً:
+// 1) بحث عادي بالعربي + "مصر" + تقييد بصندوق إحداثيات مصر.
+// 2) لو مفيش نتايج، نجرب من غير "مصر" (بعض الأماكن مسجلة من غيرها).
+// 3) لو لسه مفيش نتايج، نجرب بالإنجليزي - كتير من شوارع مصر في
+//    OpenStreetMap متسجلة بالإنجليزي بس من غير اسم عربي.
 async function forwardGeocode(query) {
-  try {
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + " مصر")}&accept-language=ar&limit=5&countrycodes=eg`,
-      { headers: { "Accept-Language": "ar" } }
-    );
-    return await res.json();
-  } catch { return []; }
+  const baseParams =
+    `format=json&addressdetails=1&limit=8&countrycodes=eg` +
+    `&viewbox=${EGYPT_VIEWBOX}&bounded=1`;
+
+  const tryFetch = async (q, lang) => {
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/search?${baseParams}&q=${encodeURIComponent(q)}&accept-language=${lang}`,
+        { headers: { "Accept-Language": lang } }
+      );
+      return await res.json();
+    } catch { return []; }
+  };
+
+  let results = await tryFetch(`${query} مصر`, "ar");
+  if (!results.length) results = await tryFetch(query, "ar");
+  if (!results.length) results = await tryFetch(`${query}, Egypt`, "en");
+
+  return results;
 }
 
 export default function UserDashboard() {
@@ -145,8 +172,12 @@ export default function UserDashboard() {
   }, []);
 
   const onMapUpdate = useCallback((point) => {
+    // خريطة اليوزر خاصة: البلاغات الجاية عن طريق البرودكاست بتوصل لكل
+    // اليوزرز المتصلين، فلازم نتأكد إن البلاغ ده بتاع اليوزر الحالي بس
+    // قبل ما نضيفه للخريطة عنده (الباك إند بيبعت الـ userId مع كل بلاغ جديد)
+    if (point.userId && point.userId !== user?.id) return;
     setMapPoints(p => [...p, point]);
-  }, []);
+  }, [user]);
 
   const onNewReport = useCallback(() => {}, []);
 

@@ -40,10 +40,18 @@ public class ReportRepository : IReportRepository
         await _db.SaveChangesAsync();
     }
 
-    public async Task<IEnumerable<MapPointDto>> GetMapPointsAsync()
+    public async Task<IEnumerable<MapPointDto>> GetMapPointsAsync(string? userId = null)
     {
-        var reports = await _db.Reports
-            .Where(r => r.PredictedClass != null)
+        var query = _db.Reports.Where(r => r.PredictedClass != null);
+
+        // لو userId اتبعت (خريطة اليوزر الخاصة)، فلتر على بلاغاته هو بس.
+        // لو مفيش userId (خريطة الأدمن)، رجّع كل البلاغات زي ما هي.
+        if (!string.IsNullOrEmpty(userId))
+        {
+            query = query.Where(r => r.UserId == userId);
+        }
+
+        var reports = await query
             .Select(r => new
             {
                 r.Id,
