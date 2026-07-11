@@ -1,0 +1,684 @@
+id,problem,city,district,street,latitude,longitude,report_date
+293,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-04-21
+146,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-06-06
+212,damaged road,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-02-15
+119,small trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-03-30
+303,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-02-20
+376,damaged road,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-05-10
+356,damaged road,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-06-14
+159,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-03-18
+336,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-06-26
+582,big trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-05-10
+322,damaged road,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-02-01
+515,big trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-06-16
+214,damaged road,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-01-14
+177,small trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-06-05
+266,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-05-01
+221,damaged road,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-05-25
+91,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-03-18
+55,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-01-16
+389,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-01-22
+182,small trash,Giza,Dokki,Syria St,30.0131,31.2089,2026-03-19
+149,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-03-12
+651,big trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-01-15
+378,damaged road,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-05-23
+292,damaged road,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-01-15
+312,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-06-10
+645,big trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-05-16
+228,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-03-09
+572,big trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-04-26
+136,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-03-02
+474,damaged home,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-06-09
+330,damaged road,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-03-19
+500,big trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-01-21
+305,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-03-17
+64,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-02-18
+78,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-06-02
+564,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-02-25
+468,damaged home,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-02-05
+381,damaged road,Tanta,First District,El Geish St,30.7865,31.0004,2026-06-18
+110,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-01-28
+73,small trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-02-18
+133,small trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-04-24
+213,damaged road,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-05-17
+452,damaged home,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-06-23
+11,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-03-30
+295,damaged road,Tanta,First District,El Bahr St,30.7865,31.0004,2026-02-14
+611,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-01-13
+166,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-06-14
+327,damaged road,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-06-15
+675,big trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-05-28
+32,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-01-24
+79,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-04-14
+634,big trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-26
+361,damaged road,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-06-02
+265,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-30
+671,big trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-04-25
+501,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-03-17
+56,small trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-03-26
+272,damaged road,Tanta,Second District,El Modares St,30.7865,31.0004,2026-04-25
+530,big trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-05-03
+121,small trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-02-18
+137,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-02-07
+432,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-05-14
+3,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-04-19
+426,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-05-22
+679,big trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-06-01
+355,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-06-18
+315,damaged road,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-04-17
+102,small trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-05-30
+663,big trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-04-11
+82,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-02-22
+413,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-05-11
+290,damaged road,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-01-26
+77,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-05-11
+175,small trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-05-02
+297,damaged road,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-02-06
+61,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-04-16
+533,big trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-06-24
+31,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-02-26
+70,small trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-04-13
+210,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-05-15
+216,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-05-27
+45,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-03
+71,small trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-01-01
+205,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-04-27
+489,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-02-16
+224,damaged road,Tanta,First District,El Geish St,30.7865,31.0004,2026-04-08
+134,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-02-13
+522,big trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-06-20
+156,small trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-04-17
+559,big trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-04-18
+524,big trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-02-10
+66,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-05
+637,big trash,Giza,Dokki,Syria St,30.0131,31.2089,2026-01-31
+50,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-04-13
+329,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-01-30
+132,small trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-06-05
+40,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-01-28
+307,damaged road,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-06-25
+251,damaged road,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-04-16
+7,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-04-25
+584,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-05
+350,damaged road,Giza,6th of October,Central Axis,30.0131,31.2089,2026-01-05
+260,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-06-11
+165,small trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-06-01
+590,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-06-24
+343,damaged road,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-03-04
+328,damaged road,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-06-29
+680,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-04-20
+200,small trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-01-24
+87,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-02-03
+183,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-01-11
+291,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-03-18
+248,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-05-30
+635,big trash,Alexandria,Miami,45 St,31.2001,29.9187,2026-05-27
+193,small trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-01-08
+498,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-05-08
+42,small trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-02-11
+488,damaged home,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-06-25
+109,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-03-05
+531,big trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-05-28
+57,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-03-13
+665,big trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-04-29
+282,damaged road,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-02-09
+496,damaged home,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-05
+632,big trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-03-24
+235,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-06-19
+589,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-05-15
+319,damaged road,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-01-20
+25,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-03-22
+405,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-05-27
+603,big trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-05-24
+639,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-01-31
+111,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-02-26
+83,small trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-04-12
+52,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-01-17
+211,damaged road,Tanta,Second District,El Modares St,30.7865,31.0004,2026-02-19
+549,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-03-19
+438,damaged home,Tanta,First District,Saeed St,30.7865,31.0004,2026-01-21
+257,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-05-08
+585,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-04-17
+19,small trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-04-01
+351,damaged road,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-02-02
+529,big trash,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-01-17
+466,damaged home,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-01-26
+209,damaged road,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-05-04
+62,small trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-06-17
+249,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-05-01
+534,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-05-22
+30,small trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-05-30
+337,damaged road,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-04-24
+409,damaged home,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-03-04
+545,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-01-08
+320,damaged road,Giza,Dokki,Syria St,30.0131,31.2089,2026-06-22
+423,damaged home,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-01-10
+483,damaged home,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-04-06
+358,damaged road,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-04-24
+333,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-06-28
+236,damaged road,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-05-20
+219,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-04-13
+670,big trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-01-18
+469,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-02
+406,damaged road,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-01-30
+491,damaged home,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-01-12
+543,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-02-09
+640,big trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-02-26
+641,big trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-02-09
+164,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-02-02
+279,damaged road,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-02-02
+598,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-04-01
+465,damaged home,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-04-06
+335,damaged road,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-06-07
+454,damaged home,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-03-03
+396,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-06-20
+105,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-03-05
+115,small trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-06-14
+613,big trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-03-26
+354,damaged road,Tanta,First District,Saeed St,30.7865,31.0004,2026-05-09
+449,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-04-07
+93,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-02-09
+8,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-02-10
+90,small trash,Alexandria,Miami,45 St,31.2001,29.9187,2026-05-16
+519,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-03-15
+446,damaged home,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-02-05
+650,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-05-06
+362,damaged road,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-05-10
+353,damaged road,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-05-12
+245,damaged road,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-05-31
+141,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-03-04
+250,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-03-24
+44,small trash,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-04-03
+43,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-24
+74,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-05-29
+168,small trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-03-25
+612,big trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-01
+596,big trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-25
+67,small trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-01-26
+12,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-04-28
+444,damaged home,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-04-03
+614,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-02-05
+587,big trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-03-09
+261,damaged road,Tanta,First District,El Geish St,30.7865,31.0004,2026-02-10
+347,damaged road,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-02-03
+232,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-03-01
+619,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-01-10
+558,big trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-01-13
+178,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-03-21
+458,damaged home,Tanta,First District,Saeed St,30.7865,31.0004,2026-01-14
+430,damaged home,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-01-22
+84,small trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-03-18
+502,big trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-25
+594,big trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-06-06
+445,damaged home,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-29
+80,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-05-29
+24,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-25
+16,small trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-02-28
+370,damaged road,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-04-21
+418,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-05-29
+285,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-04-08
+672,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-01-12
+321,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-04-12
+342,damaged road,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-06-02
+138,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-05-02
+341,damaged road,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-06-19
+300,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-05-20
+34,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-06-02
+536,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-05-13
+258,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-03-10
+10,small trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-01-24
+23,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-26
+606,big trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-03-15
+222,damaged road,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-01-31
+618,big trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-05-27
+669,big trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-06-07
+494,damaged home,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-02-18
+85,small trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-01-03
+482,damaged home,Tanta,First District,Saeed St,30.7865,31.0004,2026-05-01
+551,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-06-26
+508,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-23
+526,big trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-03-02
+204,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-05-21
+197,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-02-18
+600,big trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-03-18
+621,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-03-16
+94,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-02-23
+653,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-04-29
+287,damaged road,Tanta,First District,El Geish St,30.7865,31.0004,2026-01-18
+479,damaged home,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-04-17
+364,damaged road,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-05-22
+624,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-05-10
+29,small trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-03-05
+185,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-06-15
+550,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-04-14
+278,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-16
+179,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-03-21
+539,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-03-06
+154,small trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-02-09
+76,small trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-05-03
+410,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-21
+69,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-04-15
+368,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-04-06
+189,small trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-05-18
+237,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-03-10
+89,small trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-05-20
+577,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-01-11
+118,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-01-10
+512,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-02-09
+560,big trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-05-28
+239,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-05-26
+1,small trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-03-12
+676,big trash,Alexandria,Miami,45 St,31.2001,29.9187,2026-06-22
+276,damaged road,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-01-12
+657,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-05-19
+332,damaged road,Tanta,First District,Saeed St,30.7865,31.0004,2026-04-27
+117,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-08
+229,damaged road,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-02-14
+301,damaged road,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-03-30
+311,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-06-18
+275,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-05-27
+627,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-01-04
+145,small trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-02-04
+391,damaged road,Cairo,Maadi,Street 9,30.0444,31.2357,2026-03-11
+363,damaged road,Tanta,Second District,El Modares St,30.7865,31.0004,2026-06-29
+617,big trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-06-15
+484,damaged home,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-04-02
+269,damaged road,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-04-17
+450,damaged home,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-06-27
+47,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-02-02
+262,damaged road,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-05-22
+196,small trash,Alexandria,Miami,45 St,31.2001,29.9187,2026-03-12
+683,big trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-04-07
+570,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-05-24
+108,small trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-02-15
+447,damaged home,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-01-26
+523,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-05-21
+656,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-04-19
+101,small trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-02-08
+422,damaged home,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-01-19
+610,big trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-06-07
+568,big trash,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-03-09
+180,small trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-02-20
+339,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-04-02
+150,small trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-03-03
+125,small trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-06-19
+542,big trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-06-14
+591,big trash,Giza,Dokki,Syria St,30.0131,31.2089,2026-06-29
+186,small trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-05-06
+628,big trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-06-22
+383,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-01-02
+674,big trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-05-09
+334,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-02-09
+630,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-03-25
+143,small trash,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-02-15
+142,small trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-01-02
+382,damaged road,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-11
+20,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-06-29
+173,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-01-08
+647,big trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-02-21
+313,damaged road,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-01-09
+636,big trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-04-03
+13,small trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-01-21
+306,damaged road,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-04-12
+26,small trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-02-24
+504,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-04-24
+170,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-03-06
+463,damaged home,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-04-17
+397,damaged road,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-04-12
+246,damaged road,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-05-28
+299,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-03
+421,damaged home,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-06-01
+273,damaged road,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-03-27
+155,small trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-04-15
+127,small trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-03-25
+535,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-04-21
+288,damaged road,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-03-15
+114,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-13
+357,damaged road,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-04-13
+174,small trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-06-09
+345,damaged road,Tanta,First District,El Geish St,30.7865,31.0004,2026-02-25
+58,small trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-02-03
+429,damaged home,Tanta,First District,El Bahr St,30.7865,31.0004,2026-04-26
+223,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-06-02
+281,damaged road,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-01-04
+18,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-06-12
+394,damaged road,Tanta,First District,Saeed St,30.7865,31.0004,2026-04-21
+323,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-22
+256,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-02-18
+431,damaged home,Tanta,First District,El Bahr St,30.7865,31.0004,2026-03-05
+654,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-04-12
+191,small trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-01-23
+425,damaged home,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-05-10
+602,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-05-06
+622,big trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-05-26
+95,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-06-12
+181,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-06-10
+302,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-04-19
+666,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-04-08
+495,damaged home,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-06-17
+440,damaged home,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-07-01
+437,damaged home,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-03-06
+644,big trash,Giza,Dokki,Syria St,30.0131,31.2089,2026-06-02
+6,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-06-16
+46,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-05-05
+595,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-02-05
+516,big trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-01-07
+626,big trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-04-28
+17,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-01-26
+49,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-05-19
+660,big trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-04-25
+625,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-01-29
+4,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-02-25
+435,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-06-15
+399,damaged road,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-07
+317,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-03-11
+629,big trash,Giza,Dokki,Syria St,30.0131,31.2089,2026-06-13
+284,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-01-21
+486,damaged home,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-03-27
+286,damaged road,Alexandria,Miami,45 St,31.2001,29.9187,2026-05-05
+400,damaged road,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-01-02
+226,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-08
+27,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-06-17
+538,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-03-30
+264,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-02-09
+51,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-04-26
+365,damaged road,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-02-28
+230,damaged road,Tanta,First District,El Bahr St,30.7865,31.0004,2026-01-01
+38,small trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-04-22
+158,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-04-08
+238,damaged road,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-02-12
+655,big trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-02-25
+375,damaged road,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-03-21
+371,damaged road,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-04-06
+176,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-04-30
+578,big trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-03-27
+481,damaged home,Tanta,Second District,El Modares St,30.7865,31.0004,2026-05-15
+195,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-29
+580,big trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-06-06
+588,big trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-01-14
+412,damaged home,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-01-20
+457,damaged home,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-02-21
+659,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-02-04
+646,big trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-01-29
+586,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-06-26
+68,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-01-04
+427,damaged home,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-06-16
+169,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-28
+433,damaged home,Tanta,First District,Saeed St,30.7865,31.0004,2026-04-06
+163,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-23
+310,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-06-08
+194,small trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-05-05
+571,big trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-03-15
+366,damaged road,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-04-13
+384,damaged road,Giza,Dokki,Syria St,30.0131,31.2089,2026-06-18
+677,big trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-02-06
+480,damaged home,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-01-22
+153,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-02-08
+682,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-04-17
+448,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-28
+227,damaged road,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-01-26
+553,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-03-29
+548,big trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-06-10
+104,small trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-01-11
+652,big trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-04-17
+518,big trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-08
+75,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-22
+116,small trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-05-18
+408,damaged home,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-04-03
+658,big trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-01-09
+120,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-05-11
+54,small trash,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-01-02
+152,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-23
+404,damaged road,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-01-20
+643,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-06-20
+208,damaged road,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-06-26
+649,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-06-24
+471,damaged home,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-06-05
+453,damaged home,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-03-14
+528,big trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-05-22
+9,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-02-09
+507,big trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-06-13
+37,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-03-10
+140,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-06-28
+254,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-01-30
+304,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-03-02
+514,big trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-05-16
+517,big trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-04-10
+369,damaged road,Giza,6th of October,Central Axis,30.0131,31.2089,2026-01-18
+60,small trash,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-01-25
+112,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-20
+544,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-06-04
+487,damaged home,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-05-20
+616,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-02-21
+263,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-01-30
+573,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-06-24
+298,damaged road,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-03-07
+415,damaged home,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-02-07
+151,small trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-03-15
+434,damaged home,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-03-28
+441,damaged home,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-04-07
+267,damaged road,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-02-07
+593,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-16
+360,damaged road,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-03-12
+605,big trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-03-30
+39,small trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-03-09
+128,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-02-02
+424,damaged home,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-01-20
+417,damaged home,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-02-15
+308,damaged road,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-05-08
+199,small trash,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-05-02
+352,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-01-17
+478,damaged home,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-06-07
+147,small trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-04-25
+451,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-04-23
+633,big trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-04-09
+513,big trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-04-24
+420,damaged home,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-05-01
+443,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-06-21
+607,big trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-06-17
+148,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-04-26
+537,big trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-02-11
+349,damaged road,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-04-02
+464,damaged home,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-04-06
+326,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-05-24
+187,small trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-06-12
+124,small trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-01-18
+579,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-06-05
+97,small trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-04-19
+144,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-05-23
+240,damaged road,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-30
+395,damaged road,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-06-23
+470,damaged home,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-02-25
+546,big trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-05-28
+98,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-27
+372,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-05-31
+325,damaged road,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-03-01
+280,damaged road,Tanta,Second District,El Modares St,30.7865,31.0004,2026-04-23
+294,damaged road,Giza,Dokki,Syria St,30.0131,31.2089,2026-04-16
+255,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-05-19
+401,damaged road,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-02-03
+123,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-06-25
+184,small trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-06-19
+203,small trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-05-16
+439,damaged home,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-21
+324,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-06-13
+247,damaged road,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-05-13
+416,damaged home,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-06-04
+198,small trash,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-04-15
+552,big trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-04-17
+569,big trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-01-12
+172,small trash,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-06-16
+604,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-05-27
+130,small trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-03-19
+126,small trash,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-05-10
+403,damaged road,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-01-11
+540,big trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-03-12
+532,big trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-06-14
+220,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-06-11
+620,big trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-01-10
+520,big trash,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-02-04
+623,big trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-14
+527,big trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-05-22
+387,damaged road,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-04-27
+661,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-06-24
+510,big trash,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-01-18
+268,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-05-11
+442,damaged home,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-06-29
+497,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-04-23
+113,small trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-06-18
+233,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-06-29
+592,big trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-04-23
+374,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-04-19
+234,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-03-01
+555,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-05
+318,damaged road,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-03-17
+411,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-03-28
+609,big trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-05-24
+359,damaged road,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-06-05
+259,damaged road,Tanta,First District,Saeed St,30.7865,31.0004,2026-04-23
+283,damaged road,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-03-28
+377,damaged road,Giza,Dokki,Syria St,30.0131,31.2089,2026-05-04
+385,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-06-12
+225,damaged road,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-05-31
+648,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-03-25
+557,big trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-04-26
+473,damaged home,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-01-13
+348,damaged road,Tanta,Second District,El Modares St,30.7865,31.0004,2026-01-29
+506,big trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-06-13
+673,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-05-19
+631,big trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-01-25
+581,big trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-06-07
+86,small trash,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-05-18
+243,damaged road,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-24
+160,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-05-20
+525,big trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-02-27
+36,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-03
+541,big trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-06-07
+171,small trash,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-05-19
+583,big trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-05-25
+575,big trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-05-23
+642,big trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-06-29
+96,small trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-03-06
+241,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-03-11
+461,damaged home,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-05-12
+554,big trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-23
+597,big trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-02-14
+207,small trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-03-22
+393,damaged road,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-02-25
+398,damaged road,Tanta,First District,El Bahr St,30.7865,31.0004,2026-02-22
+576,big trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-06-04
+218,damaged road,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-03-06
+5,small trash,Giza,6th of October,El Mehwar,30.0131,31.2089,2026-01-07
+608,big trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-02-24
+547,big trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-05-27
+99,small trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-02-11
+574,big trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-01-25
+407,damaged road,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-02-13
+503,big trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-06-04
+48,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-05-16
+33,small trash,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-06-10
+201,small trash,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-06-27
+135,small trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-06-19
+28,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-04-28
+599,big trash,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-02-19
+231,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-06-02
+490,damaged home,Giza,Dokki,Syria St,30.0131,31.2089,2026-04-28
+379,damaged road,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-05-27
+289,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-04-22
+419,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-03-22
+392,damaged road,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-06-05
+499,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-03-10
+139,small trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-04-17
+63,small trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-03-28
+472,damaged home,Tanta,Second District,El Modares St,30.7865,31.0004,2026-03-15
+129,small trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-04-08
+668,big trash,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-01-29
+521,big trash,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-04-24
+65,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-04-19
+15,small trash,Alexandria,Miami,Khaled Ibn El Walid St,31.2001,29.9187,2026-06-30
+157,small trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-04-10
+41,small trash,Alexandria,Miami,45 St,31.2001,29.9187,2026-06-05
+493,damaged home,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-05-02
+380,damaged road,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-06-09
+188,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-02-15
+217,damaged road,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-04-23
+53,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-05-22
+338,damaged road,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-06-25
+296,damaged road,Cairo,Maadi,Laselky St,30.0444,31.2357,2026-06-08
+252,damaged road,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-04-13
+462,damaged home,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-02-26
+456,damaged home,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-03-14
+681,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-03-30
+270,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-01-01
+202,small trash,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-05-29
+162,small trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-01-08
+556,big trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-03
+402,damaged road,Mansoura,West Mansoura,Port Said St,31.0364,31.3807,2026-05-24
+477,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-02-06
+106,small trash,Cairo,Heliopolis,El Merghany St,30.0444,31.2357,2026-04-15
+566,big trash,Alexandria,Smouha,Albert Al Awal St,31.2001,29.9187,2026-06-17
+390,damaged road,Cairo,Nasr City,Makram Ebeid St,30.0444,31.2357,2026-06-08
+2,small trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-01-27
+638,big trash,Mansoura,East Mansoura,Suez Canal St,31.0364,31.3807,2026-04-14
+562,big trash,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-03-20
+81,small trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-01-21
+206,small trash,Alexandria,Smouha,Fawzy Moaz St,31.2001,29.9187,2026-03-01
+35,small trash,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-06-02
+509,big trash,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-06-05
+428,damaged home,Giza,Mohandessin,Sudan St,30.0131,31.2089,2026-05-02
+455,damaged home,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-05
+367,damaged road,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-04-20
+92,small trash,Cairo,Nasr City,Abbas El Akkad St,30.0444,31.2357,2026-01-30
+340,damaged road,Cairo,Heliopolis,Othman Ibn Affan St,30.0444,31.2357,2026-02-18
+565,big trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-01-13
+346,damaged road,Giza,Mohandessin,Gameat El Dowal St,30.0131,31.2089,2026-06-02
+242,damaged road,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-01-21
+14,small trash,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-06-08
+316,damaged road,Giza,Dokki,Tahrir St,30.0131,31.2089,2026-05-19
+601,big trash,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-06-30
+388,damaged road,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-03-21
+274,damaged road,Tanta,Second District,El Nadi St,30.7865,31.0004,2026-03-24
+167,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-02-16
+678,big trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-03-18
+485,damaged home,Cairo,Heliopolis,Al Ahram St,30.0444,31.2357,2026-06-18
+667,big trash,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-03-30
+505,big trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-01
+244,damaged road,Tanta,Second District,El Modares St,30.7865,31.0004,2026-01-24
+567,big trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-03
+563,big trash,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-04-11
+190,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-06-01
+476,damaged home,Tanta,First District,El Geish St,30.7865,31.0004,2026-05-12
+511,big trash,Giza,6th of October,Central Axis,30.0131,31.2089,2026-04-03
+59,small trash,Tanta,Second District,El Modares St,30.7865,31.0004,2026-05-02
+475,damaged home,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-05-08
+561,big trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-05-08
+253,damaged road,Tanta,First District,Saeed St,30.7865,31.0004,2026-01-23
+22,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-04-29
+314,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-02-03
+460,damaged home,Tanta,First District,Saeed St,30.7865,31.0004,2026-01-22
+161,small trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-02-26
+277,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-06-30
+192,small trash,Alexandria,Smouha,Victor Emmanuel St,31.2001,29.9187,2026-04-29
+386,damaged road,Cairo,Nasr City,Mostafa El Nahas St,30.0444,31.2357,2026-05-16
+414,damaged home,Giza,Mohandessin,Shehab St,30.0131,31.2089,2026-06-15
+492,damaged home,Giza,Dokki,Mossadak St,30.0131,31.2089,2026-03-21
+344,damaged road,Giza,6th of October,Al Hosary St,30.0131,31.2089,2026-01-18
+309,damaged road,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-04-01
+662,big trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-03-31
+131,small trash,Mansoura,West Mansoura,Toranil St,31.0364,31.3807,2026-03-15
+664,big trash,Tanta,First District,El Geish St,30.7865,31.0004,2026-02-27
+100,small trash,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-03
+373,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-02-01
+88,small trash,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-04-05
+459,damaged home,Mansoura,East Mansoura,El Mashaya St,31.0364,31.3807,2026-01-27
+331,damaged road,Mansoura,West Mansoura,El Gomhoria St,31.0364,31.3807,2026-03-02
+215,damaged road,Tanta,Second District,Alexandria St,30.7865,31.0004,2026-02-02
+467,damaged home,Alexandria,Sidi Gaber,Omar Lotfy St,31.2001,29.9187,2026-01-10
+122,small trash,Alexandria,Sidi Gaber,El Horreya Rd,31.2001,29.9187,2026-04-22
+615,big trash,Cairo,Maadi,Street 9,30.0444,31.2357,2026-04-15
+21,small trash,Cairo,Maadi,Palestine St,30.0444,31.2357,2026-02-13
+72,small trash,Mansoura,East Mansoura,Abdel Salam Aref St,31.0364,31.3807,2026-03-15
+107,small trash,Tanta,First District,El Bahr St,30.7865,31.0004,2026-02-11
+271,damaged road,Alexandria,Miami,Gamal Abdel Nasser Rd,31.2001,29.9187,2026-05-31
+436,damaged home,Alexandria,Sidi Gaber,Port Said St,31.2001,29.9187,2026-01-25
+103,small trash,Tanta,First District,Saeed St,30.7865,31.0004,2026-02-02
