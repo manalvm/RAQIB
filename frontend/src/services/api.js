@@ -14,25 +14,64 @@ const headers = (isForm = false) => ({
 // UI sees down to a single, friendly Arabic string.
 const AR_ERROR_MAP = [
   [/already exists|is already taken/i, "هذا البريد الإلكتروني مستخدم بالفعل."],
-  [/passwords must have at least one non alphanumeric/i, "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل."],
-  [/passwords must have at least one digit/i, "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل."],
-  [/passwords must have at least one uppercase/i, "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل."],
-  [/passwords must have at least one lowercase/i, "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل."],
-  [/passwords must be at least (\d+) characters/i, (m) => `يجب أن تتكون كلمة المرور من ${m[1]} أحرف على الأقل.`],
-  [/invalid email/i, "البريد الإلكتروني غير صالح."],
-  [/unauthorized/i, "بيانات الدخول غير صحيحة."],
+
+  [/passwords must have at least one non alphanumeric/i,
+    "يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل."],
+
+  [/passwords must have at least one digit/i,
+    "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل."],
+
+  [/passwords must have at least one uppercase/i,
+    "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل."],
+
+  [/passwords must have at least one lowercase/i,
+    "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل."],
+
+  [/passwords must be at least (\d+) characters/i,
+    (m) => `يجب أن تتكون كلمة المرور من ${m[1]} أحرف على الأقل.`],
+
+  [/invalid email/i,
+    "البريد الإلكتروني غير صالح."],
+
+  [/email is not registered/i,
+    "البريد الإلكتروني غير مسجل."],
+
+  [/email not found/i,
+    "البريد الإلكتروني غير مسجل."],
+
+  [/incorrect password/i,
+    "كلمة المرور غير صحيحة."],
+
+  [/wrong password/i,
+    "كلمة المرور غير صحيحة."],
+
+  [/account disabled/i,
+    "تم تعطيل هذا الحساب."],
+
+  [/locked out/i,
+    "تم قفل الحساب مؤقتًا بسبب كثرة المحاولات الخاطئة."],
+
+  [/unauthorized/i,
+    "بيانات الدخول غير صحيحة."]
 ];
 
 function translateAuthError(msg) {
   if (!msg) return "حدث خطأ، حاول مرة أخرى.";
-  // Already Arabic (most of our own business-logic errors are) — pass through as-is.
-  if (/[\u0600-\u06FF]/.test(msg)) return msg;
+
+  // لو الرسالة عربية رجعها كما هي
+  if (/[\u0600-\u06FF]/.test(msg))
+    return msg;
 
   for (const [pattern, replacement] of AR_ERROR_MAP) {
     const match = msg.match(pattern);
-    if (match) return typeof replacement === "function" ? replacement(match) : replacement;
+    if (match) {
+      return typeof replacement === "function"
+        ? replacement(match)
+        : replacement;
+    }
   }
-  return "حدث خطأ، حاول مرة أخرى.";
+
+  return msg;
 }
 
 async function request(path, opts = {}) {
@@ -67,7 +106,8 @@ async function request(path, opts = {}) {
     error.userId = errPayload.userId;
     throw error;
   }
-  return res.json();
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
 }
 
 export const api = {

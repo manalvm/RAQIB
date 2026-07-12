@@ -408,3 +408,6 @@ D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\bin\Debug\net10.0\Google.Apis.Auth.dll
 D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\bin\Debug\net10.0\Google.Apis.Core.dll
 D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\bin\Debug\net10.0\System.Management.dll
 D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll
+D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\obj\Debug\net10.0\compressed\tiy2ukthu1-{0}-wdqzsu2pew-wdqzsu2pew.gz
+D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\obj\Debug\net10.0\compressed\8h3owepzkx-{0}-912v3zjts0-912v3zjts0.gz
+D:\RAQIB\Raqib\RAQIB_API\RAQIB_API\obj\Debug\net10.0\compressed\eu2aaex2dq-{0}-7xgva78jl2-7xgva78jl2.gz

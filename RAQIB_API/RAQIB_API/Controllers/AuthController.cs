@@ -202,40 +202,49 @@ public class AuthController : ControllerBase
 
     // ── Login ────────────────────────────────────────────────
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginDto dto)
-    {
-        var user = await _users.FindByEmailAsync(dto.Email);
-        if (user == null)
-            return Unauthorized(new[] { "بيانات غير صحيحة" });
+public async Task<IActionResult> Login(LoginDto dto)
+{
+    var user = await _users.FindByEmailAsync(dto.Email);
 
-        if (!user.EmailConfirmed)
-            return Unauthorized(new { message = "يرجى تأكيد البريد الإلكتروني أولاً", needsVerification = true, userId = user.Id });
+    if (user == null)
+        return Unauthorized(new[] { "البريد الإلكتروني غير مسجل." });
 
-        if (!user.IsActive)
-            return Unauthorized(new[] { "الحساب غير مفعل" });
+    if (!user.EmailConfirmed)
+        return Unauthorized(new
+        {
+            message = "يرجى تأكيد البريد الإلكتروني أولاً.",
+            needsVerification = true,
+            userId = user.Id
+        });
 
-        // lockoutOnFailure: true → uses ASP.NET Identity's built-in brute-force
-        // protection (default: 5 failed attempts locks the account for 5 minutes).
-        var result = await _signIn.CheckPasswordSignInAsync(user, dto.Password, lockoutOnFailure: true);
+    if (!user.IsActive)
+        return Unauthorized(new[] { "تم تعطيل هذا الحساب." });
 
-        if (result.IsLockedOut)
-            return Unauthorized(new[] { "تم قفل الحساب مؤقتاً بسبب محاولات دخول خاطئة متعددة. حاول مرة أخرى لاحقاً." });
+    var result = await _signIn.CheckPasswordSignInAsync(
+        user,
+        dto.Password,
+        lockoutOnFailure: true);
 
-        if (!result.Succeeded)
-            return Unauthorized(new[] { "بيانات غير صحيحة" });
+    if (result.IsLockedOut)
+        return Unauthorized(new[]
+        {
+            "تم قفل الحساب مؤقتًا بسبب كثرة المحاولات الخاطئة. حاول مرة أخرى لاحقًا."
+        });
 
-        var roles = await _users.GetRolesAsync(user);
-        var token = GenerateJwt(user, roles);
+    if (!result.Succeeded)
+        return Unauthorized(new[] { "كلمة المرور غير صحيحة." });
 
-        return Ok(new AuthResultDto(
-            token,
-            user.Id,
-            user.FullName,
-            roles.FirstOrDefault() ?? "User",
-            DateTime.UtcNow.AddDays(7)
-        ));
-    }
+    var roles = await _users.GetRolesAsync(user);
+    var token = GenerateJwt(user, roles);
 
+    return Ok(new AuthResultDto(
+        token,
+        user.Id,
+        user.FullName,
+        roles.FirstOrDefault() ?? "User",
+        DateTime.UtcNow.AddDays(7)
+    ));
+}
     // ── Google OAuth ─────────────────────────────────────────
     // Loop through three cases, per the required flow:
     //   1) This Google account is already linked to a user            → log in.

@@ -81,9 +81,9 @@ public class AiAgentService : IAiAgentService
 
         var aiReply =
             $"تم تحليل الصورة بنجاح.\n\n" +
-            $"🔍 **نوع المشكلة:** {classAr}\n" +
-            $"⚠️ **درجة الخطورة:** {severityAr}\n" +
-            $"📊 **نسبة الضرر:** {damageRaw:F1}%\n\n" +
+            $" نوع المشكلة:{classAr}\n" +
+            $" درجة الخطورة: {severityAr}\n" +
+            $" نسبة الضرر:* {damageRaw:F1}%\n\n" +
             $"{deptMsg}";
 
         return new AiPredictionDto(

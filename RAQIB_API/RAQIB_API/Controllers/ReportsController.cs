@@ -197,20 +197,33 @@ public class ReportsController : ControllerBase
               ?? new List<ChatMessageDto>();
 
         // بناء prediction result object للـ Python agent
-        var predictionResult = new
-        {
-            predicted_class = report.PredictedClass,
-            confidence_score = report.Confidence * 100,
-            damage_percentage = report.DamagePercentage,
-            severity_score = report.AiSeverityScore,
-            severity_label = report.SeverityLabel switch
-            {
-                "عالية" => "High",
-                "متوسطة" => "Medium",
-                "منخفضة" => "Low",
-                _ => "Low"
-            },
-        };
+
+    Console.WriteLine("===== REPORT STATUS =====");
+    Console.WriteLine(report.Status);
+    Console.WriteLine(report.Status.ToString());
+       var predictionResult = new
+{
+    predicted_class = report.PredictedClass,
+    confidence_score = report.Confidence * 100,
+    damage_percentage = report.DamagePercentage,
+    severity_score = report.AiSeverityScore,
+    severity_label = report.SeverityLabel switch
+    {
+        "عالية" => "High",
+        "متوسطة" => "Medium",
+        "منخفضة" => "Low",
+        _ => "Low"
+    },
+
+    governorate = report.Governorate,
+    area = report.Area,
+    street = report.Street,
+    address = report.Address,
+
+    report_status = report.Status.ToString(),
+    created_at = report.CreatedAt,
+    resolved_at = report.ResolvedAt
+};
 
         // إضافة رسالة اليوزر للـ history
         history.Add(new ChatMessageDto("user", dto.UserMessage));

@@ -20,6 +20,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CacheProvider } from "@emotion/react";
+import createCache from "@emotion/cache";
+import { prefixer } from "stylis";
+import rtlPlugin from "stylis-plugin-rtl";
 import AssessmentRoundedIcon from "@mui/icons-material/AssessmentRounded";
 import InsightsRoundedIcon from "@mui/icons-material/InsightsRounded";
 import WarningAmberRoundedIcon from "@mui/icons-material/WarningAmberRounded";
@@ -65,6 +70,90 @@ const sortReports = (list) => [...list].sort((a, b) => (b.severityScore ?? 0) - 
 const formatNumber = (value) => (value == null || Number.isNaN(value) ? "—" : Number(value).toFixed(value >= 10 ? 0 : 1));
 const formatPercent = (value) => (value == null || Number.isNaN(value) ? "—" : `${Number(value).toFixed(1)}%`);
 
+// ── RTL cache for Emotion (MUI's underlying CSS engine) ──
+// theme.direction alone only flips *logic* (e.g. Menu anchor math). It does
+// NOT flip the generated CSS itself, which is why the Select/TextField label
+// notch was rendering on the wrong side and overlapping the date inputs.
+// This cache makes Emotion actually mirror the CSS output for RTL.
+const rtlCache = createCache({
+  key: "muirtl",
+  stylisPlugins: [prefixer, rtlPlugin],
+});
+
+// ── Dark RAQIB-themed MUI instance ──
+// Without this, MUI falls back to its default *light* theme: Select/TextField/
+// Menu render with near-black text and a white dropdown panel, which is
+// unreadable against our navy background. This makes every MUI component in
+// the tree (filters, table Select, PDF modal, charts' tooltips, etc.) pick up
+// the brand palette automatically instead of overriding each one by hand.
+const muiTheme = createTheme({
+  direction: "rtl",
+  palette: {
+    mode: "dark",
+    primary: { main: C.orange, dark: C.orangeDark, contrastText: "#1a1103" },
+    background: { paper: "#0d1f35", default: "#0b1c33" },
+    text: { primary: C.offWhite, secondary: C.gray },
+    divider: "rgba(200,205,214,.18)",
+  },
+  typography: { fontFamily: "Cairo, sans-serif" },
+  shape: { borderRadius: 10 },
+  components: {
+    MuiPaper: {
+      styleOverrides: { root: { backgroundImage: "none", backgroundColor: "#0d1f35" } },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#0d1f35",
+          border: "1px solid rgba(200,205,214,.18)",
+          boxShadow: "0 16px 32px rgba(2,8,23,.45)",
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: C.offWhite,
+          fontSize: 13.5,
+          "&:hover": { backgroundColor: "rgba(242,140,40,.12)" },
+          "&.Mui-selected": { backgroundColor: "rgba(242,140,40,.16)" },
+          "&.Mui-selected:hover": { backgroundColor: "rgba(242,140,40,.22)" },
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: { color: C.offWhite, backgroundColor: "rgba(13,31,53,.55)" },
+        notchedOutline: { borderColor: "rgba(200,205,214,.22)" },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: { input: { color: C.offWhite } },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: C.gray,
+          backgroundColor: "transparent",
+          "&.Mui-focused": { color: C.orange },
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: { icon: { color: C.gray } },
+    },
+    MuiTableCell: {
+      styleOverrides: { root: { borderColor: "rgba(200,205,214,.12)" } },
+    },
+    MuiChip: {
+      styleOverrides: { root: { fontFamily: "Cairo, sans-serif" } },
+    },
+    MuiSkeleton: {
+      styleOverrides: { root: { backgroundColor: "rgba(39,68,110,.35)" } },
+    },
+  },
+});
+
 function StatCard({ icon, label, value, color }) {
   return (
     <Box
@@ -73,6 +162,12 @@ function StatCard({ icon, label, value, color }) {
         overflow: "hidden",
         borderRadius: 3.5,
         p: { xs: 2.1, md: 2.4 },
+        minHeight: 128,
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
         background: "linear-gradient(135deg, rgba(39,68,110,.54) 0%, rgba(13,31,53,.84) 100%)",
         border: "1px solid rgba(200,205,214,.16)",
         boxShadow: "0 18px 40px rgba(2,8,23,.24)",
@@ -88,12 +183,14 @@ function StatCard({ icon, label, value, color }) {
         </Box>
         <Box sx={{ width: 10, height: 10, borderRadius: "50%", background: color, boxShadow: `0 0 0 6px ${color}20` }} />
       </Stack>
-      <Typography variant="h4" sx={{ fontWeight: 800, color: C.white, lineHeight: 1.1, mb: 0.45, position: "relative" }}>
-        {value}
-      </Typography>
-      <Typography variant="body2" sx={{ color: C.gray, position: "relative" }}>
-        {label}
-      </Typography>
+      <Box sx={{ position: "relative" }}>
+        <Typography variant="h4" sx={{ fontWeight: 800, color: C.white, lineHeight: 1.1, mb: 0.45 }}>
+          {value}
+        </Typography>
+        <Typography variant="body2" sx={{ color: C.gray }}>
+          {label}
+        </Typography>
+      </Box>
     </Box>
   );
 }
@@ -164,7 +261,7 @@ export default function AdminDashboard() {
 
   useSignalR(() => {}, onMapUpdate, onNewReport);
 
-  const tabs = [{ id: "overview", label: "📊 نظرة عامة" }, { id: "map", label: "🗺️ الخريطة" }, { id: "reports", label: "📋 البلاغات" }];
+  const tabs = [{ id: "overview", label: " نظرة عامة" }, { id: "map", label: " الخريطة" }, { id: "reports", label: " البلاغات" }];
 
   const filteredReports = useMemo(() => reports.filter((report) => {
     const createdAt = report.createdAt ? new Date(report.createdAt) : null;
@@ -272,13 +369,22 @@ export default function AdminDashboard() {
       await api.updateStatus(reportId, newStatus);
       setReports((prev) => prev.map((r) => (r.id === reportId ? { ...r, status: newStatus } : r)));
       if (newStatus === "Resolved") {
-        pushToast(`✅ تم حل البلاغ #${reportId} — تم إشعار المستخدم وإرسال إيميل تأكيد.`);
+        pushToast(` تم حل البلاغ #${reportId} — تم إشعار المستخدم وإرسال إيميل تأكيد.`);
       } else {
         pushToast(`تم تحديث حالة البلاغ #${reportId} إلى "${STATUS_AR[newStatus] || newStatus}"`);
       }
-    } catch {
-      pushToast(`⚠️ تعذر تحديث حالة البلاغ #${reportId}`);
-    } finally {
+    }
+     catch (err) {
+  console.error(err);
+
+  if (err.response) {
+    console.log(err.response.data);
+    console.log(err.response.status);
+  }
+
+  pushToast(`تعذر تحديث حالة البلاغ #${reportId}`);
+}
+     finally {
       setStatusUpdating((prev) => {
         const n = new Set(prev);
         n.delete(reportId);
@@ -288,6 +394,8 @@ export default function AdminDashboard() {
   };
 
   return (
+    <CacheProvider value={rtlCache}>
+    <ThemeProvider theme={muiTheme}>
     <div className="raqib-admin">
       <style>{`
         .raqib-admin{--o:#F28C28;--od:#E57200;--gray:#C8CDD6;--off:#FCFDFF;--red:#D1453B;min-height:100vh;background:#0b1c33;font-family:Cairo,sans-serif;box-sizing:border-box}
@@ -307,12 +415,12 @@ export default function AdminDashboard() {
         .rq-toast-stack{position:fixed;top:20px;left:20px;z-index:3000;display:flex;flex-direction:column;gap:10px;max-width:340px}
         .rq-toast{border-radius:12px;padding:12px 14px;font-size:13px;color:var(--off);background:rgba(13,31,53,.95);border:1px solid rgba(209,69,59,.5);box-shadow:0 10px 24px rgba(0,0,0,.35);display:flex;align-items:flex-start;gap:10px;animation:toast-in .25s ease-out both}
         .rq-toast-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:13px}
-        .rq-content{max-width:1440px;margin:0 auto;padding:28px 24px 40px}
-        .rq-tabs{display:flex;gap:8px;margin-bottom:28px;border-bottom:1px solid rgba(200,205,214,.15)}
+        .rq-content{max-width:1440px;margin:0 auto;padding:24px 24px 40px}
+        .rq-tabs{display:flex;gap:8px;margin-bottom:24px;border-bottom:1px solid rgba(200,205,214,.15)}
         .rq-tab{padding:10px 16px;font-size:14px;font-weight:600;background:none;cursor:pointer;border:none;border-bottom:2px solid transparent;color:var(--gray);transition:all .2s ease;font-family:inherit;border-radius:999px 999px 0 0}
         .rq-tab:hover{color:var(--off);background:rgba(242,140,40,.08)}
         .rq-tab.on{color:var(--o);border-bottom-color:var(--o);background:rgba(242,140,40,.1)}
-        .rq-section{display:flex;flex-direction:column;gap:28px}
+        .rq-section{display:flex;flex-direction:column;gap:22px}
         .rq-err-banner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:12px;margin-bottom:20px;font-size:13px;background:rgba(209,69,59,.12);border:1px solid rgba(209,69,59,.35);color:var(--off)}
         .rq-ghost{border:1px solid rgba(242,140,40,.35);border-radius:10px;color:var(--o);background:rgba(242,140,40,.08);transition:background .15s;cursor:pointer;font-family:inherit;padding:8px 16px;font-size:13px}
         .rq-alerts-card{border-radius:16px;padding:20px;background:rgba(39,68,110,.28);border:1px solid rgba(209,69,59,.3)}
@@ -382,27 +490,27 @@ export default function AdminDashboard() {
 
         {activeTab === "overview" && (
           <div className="rq-section" dir="rtl">
-            <Grid container spacing={2.2}>
+            <Grid container spacing={2.2} alignItems="stretch">
               {loading ? (
                 Array.from({ length: 6 }).map((_, index) => (
                   <Grid item xs={12} sm={6} md={4} key={index}>
-                    <Skeleton variant="rectangular" height={118} sx={{ borderRadius: 3, bgcolor: "rgba(39,68,110,.35)" }} />
+                    <Skeleton variant="rectangular" height={128} sx={{ borderRadius: 3 }} />
                   </Grid>
                 ))
               ) : (
                 <>
-                  <Grid item xs={12} sm={6} md={4}><StatCard icon={<AnalyticsRoundedIcon />} label="إجمالي البلاغات" value={summary.total} color={C.navySecondary} /></Grid>
-                  <Grid item xs={12} sm={6} md={4}><StatCard icon={<TimelineRoundedIcon />} label="قيد التنفيذ" value={summary.active} color={C.orange} /></Grid>
-                  <Grid item xs={12} sm={6} md={4}><StatCard icon={<ShieldRoundedIcon />} label="تم الحل" value={summary.resolved} color={C.orangeDark} /></Grid>
-                  <Grid item xs={12} sm={6} md={4}><StatCard icon={<EmergencyRoundedIcon />} label="بلاغات عالية الخطورة" value={summary.highSeverity} color={C.critical} /></Grid>
-                  <Grid item xs={12} sm={6} md={4}><StatCard icon={<AutoAwesomeRoundedIcon />} label="متوسط ثقة الذكاء الاصطناعي" value={`${formatNumber(summary.avgConfidence)}%`} color="#4F8EF7" /></Grid>
-                  <Grid item xs={12} sm={6} md={4}><StatCard icon={<TrendingUpRoundedIcon />} label="متوسط نسبة الضرر" value={formatPercent(summary.avgDamage)} color="#34C759" /></Grid>
+                  <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}><StatCard icon={<AnalyticsRoundedIcon />} label="إجمالي البلاغات" value={summary.total} color={C.navySecondary} /></Grid>
+                  <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}><StatCard icon={<TimelineRoundedIcon />} label="قيد التنفيذ" value={summary.active} color={C.orange} /></Grid>
+                  <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}><StatCard icon={<ShieldRoundedIcon />} label="تم الحل" value={summary.resolved} color={C.orangeDark} /></Grid>
+                  <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}><StatCard icon={<EmergencyRoundedIcon />} label="بلاغات عالية الخطورة" value={summary.highSeverity} color={C.critical} /></Grid>
+                  <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}><StatCard icon={<AutoAwesomeRoundedIcon />} label="متوسط ثقة الذكاء الاصطناعي" value={`${formatNumber(summary.avgConfidence)}%`} color="#4F8EF7" /></Grid>
+                  <Grid item xs={12} sm={6} md={4} sx={{ display: "flex" }}><StatCard icon={<TrendingUpRoundedIcon />} label="متوسط نسبة الضرر" value={formatPercent(summary.avgDamage)} color="#34C759" /></Grid>
                 </>
               )}
             </Grid>
 
             <DashboardCard title="مرشحات التحليل" subtitle="تصفية العرض حسب الموقع، النوع، الدرجة والحالة" icon={<FilterListRoundedIcon sx={{ color: C.orange }} />}>
-              <Stack direction={{ xs: "column", md: "row" }} spacing={1.5} useFlexGap flexWrap="wrap" sx={{ mb: 1.2 }}>
+              <Stack direction={{ xs: "column", md: "row" }} spacing={1.5} useFlexGap flexWrap="wrap" sx={{ mb: 1.2, pt: 1 }}>
                 <FormControl size="small" sx={{ minWidth: 180, flex: 1 }}>
                   <InputLabel id="gov-filter">المحافظة</InputLabel>
                   <Select labelId="gov-filter" value={filters.governorate} label="المحافظة" onChange={(e) => setFilters((p) => ({ ...p, governorate: e.target.value }))}>
@@ -572,5 +680,7 @@ export default function AdminDashboard() {
         governorateOptions={governorateOptions}
       />
     </div>
+    </ThemeProvider>
+    </CacheProvider>
   );
 }

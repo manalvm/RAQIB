@@ -19,15 +19,19 @@ const C = {
 };
 
 const SEV_COLOR = { 0: C.navySecondary, 1: C.orange, 2: C.orangeDark, 3: C.critical };
-const SEV_ICON  = { 0: "✅", 1: "🟡", 2: "🟠", 3: "🔴" };
+const SEV_ICON  = { 0: "", 1: "🟡", 2: "🟠", 3: "🔴" };
 const CLASS_AR  = {
   "Damaged Road": "طريق تالف", "Normal Road": "طريق سليم",
   "Damaged Home": "مبنى متضرر", "Normal Building": "مباني سليمة",
   "Big Trash": "نفايات كبيرة", "Small Trash": "نفايات صغيرة",
-  // legacy keys
   "BIG TRASH": "نفايات كبيرة", "SMALL TRASH": "نفايات صغيرة",
   "NORMAL ROAD": "طريق سليم", "DAMAGED ROAD": "طريق تالف",
   "NORMAL BUILDINGS": "مباني سليمة", "DAMAGED HOME": "مبنى متضرر",
+  Pending: "قيد المراجعة",
+  InProgress: "جارٍ التنفيذ",
+  Resolved: "تم الحل",
+  Rejected: "تم رفض البلاغ",
+
 };
 
 const EGYPT_GOVERNORATES = [
@@ -38,7 +42,6 @@ const EGYPT_GOVERNORATES = [
   "قنا","شمال سيناء","سوهاج",
 ];
 
-// ── Custom pin icon ───────────────────────────────────────────
 const pinIcon = L.divIcon({
   html: `<div style="width:14px;height:14px;border-radius:50%;background:${C.orange};
           border:2px solid white;box-shadow:0 0 8px ${C.orange}88"></div>`,
@@ -56,17 +59,10 @@ function FlyTo({ target }) {
   return null;
 }
 
-// ── Geocoding helpers ─────────────────────────────────────────
-
-// صندوق إحداثيات يغطي جمهورية مصر العربية بالكامل (left, top, right, bottom)
-// بيتستخدم مع bounded=1 عشان نتايج البحث تتقيد بمصر فعلياً بدل ما تشتت
-// لنتايج بعيدة، وده بيحسّن دقة الترتيب (relevance) للنتايج القريبة.
-const EGYPT_VIEWBOX = "24.6,31.9,37.0,21.9";
-
 async function reverseGeocode(lat, lng) {
   try {
     const res = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=ar&zoom=18&addressdetails=1`,
+      `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=ar`,
       { headers: { "Accept-Language": "ar" } }
     );
     const data = await res.json();
@@ -79,35 +75,14 @@ async function reverseGeocode(lat, lng) {
   } catch { return {}; }
 }
 
-// بحث نصي (forward geocoding) بتغطية أفضل لمصر:
-// Nominatim (OpenStreetMap) بيبقى ناقص بيانات لشوارع كتير في مصر لأنه
-// مصدره بيانات تطوعية (crowd-sourced)، ده حد من حدود مصدر البيانات نفسه
-// مش حاجة نقدر نصلّحها بالكامل من الكود. اللي بنقدر نعمله هو نحسّن طريقة
-// البحث عشان نلتقط أكبر عدد ممكن من النتايج المتاحة فعلاً:
-// 1) بحث عادي بالعربي + "مصر" + تقييد بصندوق إحداثيات مصر.
-// 2) لو مفيش نتايج، نجرب من غير "مصر" (بعض الأماكن مسجلة من غيرها).
-// 3) لو لسه مفيش نتايج، نجرب بالإنجليزي - كتير من شوارع مصر في
-//    OpenStreetMap متسجلة بالإنجليزي بس من غير اسم عربي.
 async function forwardGeocode(query) {
-  const baseParams =
-    `format=json&addressdetails=1&limit=8&countrycodes=eg` +
-    `&viewbox=${EGYPT_VIEWBOX}&bounded=1`;
-
-  const tryFetch = async (q, lang) => {
-    try {
-      const res = await fetch(
-        `https://nominatim.openstreetmap.org/search?${baseParams}&q=${encodeURIComponent(q)}&accept-language=${lang}`,
-        { headers: { "Accept-Language": lang } }
-      );
-      return await res.json();
-    } catch { return []; }
-  };
-
-  let results = await tryFetch(`${query} مصر`, "ar");
-  if (!results.length) results = await tryFetch(query, "ar");
-  if (!results.length) results = await tryFetch(`${query}, Egypt`, "en");
-
-  return results;
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + " مصر")}&accept-language=ar&limit=5&countrycodes=eg`,
+      { headers: { "Accept-Language": "ar" } }
+    );
+    return await res.json();
+  } catch { return []; }
 }
 
 export default function UserDashboard() {
@@ -136,12 +111,15 @@ export default function UserDashboard() {
   const [hasChatted, setHasChatted] = useState(false);
   const [activeTab, setActiveTab]   = useState("report");
 
-  // ── Notifications (bell) ──────────────────────────────────
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
 
   const chatEndRef  = useRef(null);
   const searchTimer = useRef(null);
+  // holds the user's message/image/location while the AI is still analyzing,
+  // so it can be flushed into the chat together with the result — instead of
+  // disappearing from the report tab the instant "submit" is clicked.
+  const pendingReportRef = useRef(null);
 
   useEffect(() => {
     api.getMapPoints().then(setMapPoints).catch(() => {});
@@ -152,40 +130,44 @@ export default function UserDashboard() {
 
   useEffect(() => { chatEndRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
-  // ── SignalR ───────────────────────────────────────────────
   const onAiReply = useCallback((payload) => {
-    setMessages(p => [...p, {
-      role: "ai", text: payload.aiReply,
-      class: payload.predictedClass,
-      severity: payload.severityLabel,
-      severityScore: payload.severityScore,
-      confidence: payload.confidence,
-      damagePercentage: payload.damagePercentage,
-      imagePath: payload.imagePath,
-    }]);
+    const pending = pendingReportRef.current;
+    setMessages(p => {
+      const userMsg = pending
+        ? [{ role: "user", text: pending.text, image: pending.image, location: pending.location }]
+        : [];
+      return [...p, ...userMsg, {
+        role: "ai", text: payload.aiReply,
+        class: payload.predictedClass,
+        severity: payload.severityLabel,
+        severityScore: payload.severityScore,
+        confidence: payload.confidence,
+        damagePercentage: payload.damagePercentage,
+        imagePath: payload.imagePath,
+      }];
+    });
+
+    pendingReportRef.current = null;
     setActiveReportId(payload.reportId);
     setLoading(false);
     setHasChatted(true);
     setActiveTab("chat");
-    // reload history list
+
+    // only now is it safe to clear the uploaded image / draft message
+    setImage(null); setPreview(null); setMessage("");
+
     api.getMyReports().then(setHistory).catch(() => {});
   }, []);
 
   const onMapUpdate = useCallback((point) => {
-    // خريطة اليوزر خاصة: البلاغات الجاية عن طريق البرودكاست بتوصل لكل
-    // اليوزرز المتصلين، فلازم نتأكد إن البلاغ ده بتاع اليوزر الحالي بس
-    // قبل ما نضيفه للخريطة عنده (الباك إند بيبعت الـ userId مع كل بلاغ جديد)
-    if (point.userId && point.userId !== user?.id) return;
     setMapPoints(p => [...p, point]);
-  }, [user]);
+  }, []);
 
   const onNewReport = useCallback(() => {}, []);
 
-  // ── NEW: real-time notification (e.g. "report resolved") ──
   const onNotification = useCallback((payload) => {
     setNotifications(p => [payload, ...p]);
     setUnreadCount(p => p + 1);
-    // refresh history so the resolved status shows up immediately
     api.getMyReports().then(setHistory).catch(() => {});
   }, []);
 
@@ -203,7 +185,6 @@ export default function UserDashboard() {
     try { await api.markAllNotificationsRead(); } catch {}
   }, []);
 
-  // ── Location search (debounced) ────────────────────────────
   const handleSearchChange = (val) => {
     setSearchQuery(val);
     clearTimeout(searchTimer.current);
@@ -225,13 +206,11 @@ export default function UserDashboard() {
     reverseGeocode(lat, lng).then(info => setLocInfo(prev => ({ ...prev, ...info })));
   };
 
-  // ── Map click ─────────────────────────────────────────────
   const handlePick = (latlng) => {
     setPin(latlng);
     reverseGeocode(latlng.lat, latlng.lng).then(info => setLocInfo(prev => ({ ...prev, ...info })));
   };
 
-  // ── GPS ───────────────────────────────────────────────────
   const useMyLocation = () => {
     if (!navigator.geolocation) return;
     setLocating(true);
@@ -253,7 +232,6 @@ export default function UserDashboard() {
 
   const canSubmit = image && pin && locationInfo.governorate;
 
-  // ── Submit report ─────────────────────────────────────────
   const handleSubmit = async () => {
     if (!image || !pin || !locationInfo.governorate) return;
     const fd = new FormData();
@@ -265,22 +243,26 @@ export default function UserDashboard() {
     fd.append("Area", locationInfo.area || "");
     fd.append("Street", locationInfo.street || "");
 
+    // stash what will become the chat message once the AI replies —
+    // the image/preview stay exactly as they are on screen meanwhile
+    pendingReportRef.current = {
+      text: message || "لا يوجد وصف",
+      image: imagePreview,
+      location: locationLabel,
+    };
+
     setLoading(true);
-    setMessages(p => [...p, {
-      role: "user", text: message || "لا يوجد وصف",
-      image: imagePreview, location: locationLabel,
-    }]);
-    setImage(null); setPreview(null); setMessage("");
 
     try {
       await api.createReport(fd);
+      // SignalR → onAiReply flushes the pending message + result and clears the image
     } catch {
-      setMessages(p => [...p, { role: "ai", text: "⚠️ حدث خطأ أثناء الإرسال." }]);
+      pendingReportRef.current = null;
       setLoading(false);
+      alert(" حدث خطأ أثناء الإرسال. حاول مرة أخرى.");
     }
   };
 
-  // ── Chat with AI agent ────────────────────────────────────
   const handleChatSend = async () => {
     if (!chatInput.trim() || !activeReportId) return;
     const userMsg = chatInput.trim();
@@ -297,7 +279,6 @@ export default function UserDashboard() {
     }
   };
 
-  // ── Switch to report's chat history ──────────────────────
   const openReportChat = async (reportId) => {
     try {
       const chatHistory = await api.getChatHistory(reportId);
@@ -348,6 +329,7 @@ export default function UserDashboard() {
 
         .rq-scroll{flex:1;overflow-y:auto;padding:16px}
         .rq-card{background:rgba(39,68,110,.28);border:1px solid rgba(200,205,214,.15);border-radius:16px;padding:16px;margin-bottom:16px}
+        .rq-card.disabled{opacity:.55;pointer-events:none}
         .rq-eyebrow{font-size:10.5px;letter-spacing:1.5px;color:var(--orange);margin-bottom:4px}
         .rq-title{font-weight:700;color:var(--white);margin:0 0 12px}
         .rq-label{display:block;font-size:12px;margin-bottom:6px;color:var(--gray)}
@@ -375,6 +357,12 @@ export default function UserDashboard() {
         .rq-img-wrap{position:relative;width:100%;margin-bottom:12px}
         .rq-img-wrap img{width:100%;height:176px;object-fit:cover;border-radius:12px;display:block}
         .rq-img-rm{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;font-size:12px;display:flex;align-items:center;justify-content:center;background:var(--red);color:white;border:none;cursor:pointer}
+
+        /* ── analyzing overlay on top of the uploaded image ── */
+        .rq-analyzing{position:absolute;inset:0;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(11,28,51,.72);backdrop-filter:blur(2px)}
+        .rq-spinner{width:26px;height:26px;border-radius:50%;border:3px solid rgba(242,140,40,.25);border-top-color:var(--orange);animation:spin .8s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .rq-analyzing span{font-size:12.5px;color:var(--off);font-weight:600}
 
         .rq-primary{border:none;border-radius:10px;font-weight:700;color:#1a1103;background:linear-gradient(135deg,var(--orange),var(--orange-d,#E57200));box-shadow:0 8px 18px rgba(242,140,40,.22);transition:transform .12s;cursor:pointer;font-family:inherit;width:100%;padding:12px 0;font-size:14px}
         .rq-primary:hover:not(:disabled){transform:translateY(-1px)}
@@ -425,6 +413,10 @@ export default function UserDashboard() {
         .rq-eyebrow-sm{font-size:10px;letter-spacing:1.5px;color:var(--orange)}
         .leaflet-popup-content-wrapper{background:#0d1f35!important;border:1px solid #1e3a5f!important;color:#e2e8f0!important;border-radius:12px!important}
         .leaflet-popup-tip{background:#0d1f35!important}
+
+        @media (prefers-reduced-motion: reduce) {
+          .logo-ring, .brand-name, .brand-dot, .rq-bubble.res, .rq-dot, .rq-spinner { animation: none !important; }
+        }
       `}</style>
 
       {/* ── Navbar ── */}
@@ -463,11 +455,10 @@ export default function UserDashboard() {
           {/* ── Report wizard ── */}
           {activeTab === "report" && (
             <div className="rq-scroll" dir="rtl">
-              <div className="rq-card">
+              <div className={`rq-card ${loading ? "disabled" : ""}`}>
                 <div className="rq-eyebrow">LOCATION_DATA</div>
                 <h3 className="rq-title">موقع المشكلة</h3>
 
-                {/* Search box */}
                 <div className="rq-field rq-search-wrap">
                   <label className="rq-label">ابحث عن موقع</label>
                   <input className="rq-input" value={searchQuery}
@@ -526,7 +517,14 @@ export default function UserDashboard() {
                 {imagePreview ? (
                   <div className="rq-img-wrap">
                     <img src={imagePreview} alt="preview"/>
-                    <button onClick={() => {setImage(null);setPreview(null);}} className="rq-img-rm">✕</button>
+                    {loading ? (
+                      <div className="rq-analyzing">
+                        <div className="rq-spinner" />
+                        <span>جارٍ تحليل الصورة...</span>
+                      </div>
+                    ) : (
+                      <button onClick={() => {setImage(null);setPreview(null);}} className="rq-img-rm">✕</button>
+                    )}
                   </div>
                 ) : (
                   <label className="rq-dropzone">
@@ -537,7 +535,7 @@ export default function UserDashboard() {
                   </label>
                 )}
 
-                <textarea className="rq-textarea" rows={2} value={message}
+                <textarea className="rq-textarea" rows={2} value={message} disabled={loading}
                           onChange={e => setMessage(e.target.value)}
                           placeholder="اكتب وصفاً مختصراً للمشكلة (اختياري)"
                           style={{marginBottom:12}}/>
@@ -619,8 +617,10 @@ export default function UserDashboard() {
                       {SEV_ICON[r.severityScore]} {CLASS_AR[r.predictedClass] || r.predictedClass || "—"}
                     </span>
                     <div style={{display:"flex",alignItems:"center",gap:8}}>
-                      <span className="rq-hist-status">{r.status}</span>
-                      <span className="rq-hist-chat-btn">فتح المحادثة 💬</span>
+                      <span className="rq-hist-status">
+                        {CLASS_AR[r.status] || r.status}
+                      </span>
+                      <span className="rq-hist-chat-btn">فتح المحادثة </span>
                     </div>
                   </div>
                   {(r.governorate || r.area || r.street) && (
