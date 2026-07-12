@@ -39,6 +39,7 @@ public class AiAgentService : IAiAgentService
             "High" => "عالية",
             "Medium" => "متوسطة",
             "Low" => "منخفضة",
+            "None" => "منعدمة",
             _ => "منعدمة"
         };
 
@@ -48,6 +49,7 @@ public class AiAgentService : IAiAgentService
             "High" => 3,
             "Medium" => 2,
             "Low" => 1,
+            "None" => 0,
             _ => 0
         };
 

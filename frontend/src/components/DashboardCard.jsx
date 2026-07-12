@@ -22,17 +22,17 @@ export default function DashboardCard({ title, subtitle, icon, actions, children
       }}
       {...props}
     >
-      <CardContent sx={{ p: { xs: 2.2, md: 2.8 } }}>
+      <CardContent sx={{ p: { xs: 1.9, md: 2.3 } }}>
         {(title || subtitle || icon || actions) && (
-          <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={2} sx={{ mb: 2.5 }}>
+          <Stack direction="row" justifyContent="space-between" alignItems="flex-start" spacing={2} sx={{ mb: 1.75 }}>
             <Box>
               {title && (
-                <Typography variant="h6" sx={{ fontWeight: 800, color: "#fff", mb: 0.5, letterSpacing: "0.01em" }}>
+                <Typography variant="h6" sx={{ fontWeight: 800, color: "#fff", mb: 0.35, letterSpacing: "0.01em", fontSize: "1.05rem" }}>
                   {title}
                 </Typography>
               )}
               {subtitle && (
-                <Typography variant="body2" sx={{ color: "#C8CDD6", lineHeight: 1.6 }}>
+                <Typography variant="body2" sx={{ color: "#C8CDD6", lineHeight: 1.5, fontSize: "0.82rem" }}>
                   {subtitle}
                 </Typography>
               )}
@@ -41,9 +41,9 @@ export default function DashboardCard({ title, subtitle, icon, actions, children
               {icon && (
                 <Box
                   sx={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 2.2,
+                    width: 36,
+                    height: 36,
+                    borderRadius: 2,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -59,7 +59,7 @@ export default function DashboardCard({ title, subtitle, icon, actions, children
             </Stack>
           </Stack>
         )}
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>{children}</Box>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>{children}</Box>
       </CardContent>
     </Card>
   );

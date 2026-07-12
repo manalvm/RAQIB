@@ -22,20 +22,20 @@ export function StatChip({ label, value, color = "#F28C28" }) {
   return (
     <Box
       sx={{
-        p: 2,
+        p: 1.6,
         borderRadius: 2.6,
         background: "linear-gradient(135deg, rgba(13,31,53,0.82) 0%, rgba(39,68,110,0.28) 100%)",
         border: "1px solid rgba(200,205,214,0.14)",
         boxShadow: "0 10px 24px rgba(2, 8, 23, 0.18)",
       }}
     >
-      <Typography variant="caption" sx={{ color: "#C8CDD6", display: "block", mb: 0.75 }}>
+      <Typography variant="caption" sx={{ color: "#C8CDD6", display: "block", mb: 0.5, fontSize: "0.72rem" }}>
         {label}
       </Typography>
-      <Typography variant="h6" sx={{ fontWeight: 800, color: "#fff" }}>
+      <Typography variant="h6" sx={{ fontWeight: 800, color: "#fff", fontSize: "1.05rem" }}>
         {value}
       </Typography>
-      <Box sx={{ mt: 1, width: 28, height: 4, borderRadius: 999, background: color }} />
+      <Box sx={{ mt: 0.75, width: 24, height: 3.5, borderRadius: 999, background: color }} />
     </Box>
   );
 }
@@ -45,11 +45,11 @@ function ChartFrame({ children }) {
     <Box
       sx={{
         width: "100%",
-        height: 300,
+        height: 264,
         borderRadius: 3,
         background: "linear-gradient(180deg, rgba(13,31,53,0.64) 0%, rgba(13,31,53,0.3) 100%)",
         border: "1px solid rgba(200,205,214,0.12)",
-        p: { xs: 1, sm: 1.25 },
+        p: { xs: 0.75, sm: 1 },
       }}
     >
       {children}
@@ -134,13 +134,14 @@ export function InsightPill({ label, value, icon }) {
     <Stack
       direction="row"
       alignItems="center"
-      spacing={1.2}
+      spacing={1.1}
       sx={{
-        p: 1.25,
+        p: 1.1,
         borderRadius: 2.25,
         background: "linear-gradient(135deg, rgba(13,31,53,0.82) 0%, rgba(39,68,110,0.28) 100%)",
         border: "1px solid rgba(200,205,214,0.12)",
         boxShadow: "0 10px 24px rgba(2, 8, 23, 0.16)",
+        height: "100%",
       }}
     >
       <Box sx={{ fontSize: 18 }}>{icon}</Box>

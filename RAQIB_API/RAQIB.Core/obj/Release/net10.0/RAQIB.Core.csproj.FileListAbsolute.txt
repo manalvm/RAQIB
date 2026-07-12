@@ -1,0 +1,13 @@
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\bin\Release\net10.0\RAQIB.Core.deps.json
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\bin\Release\net10.0\RAQIB.Core.dll
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\bin\Release\net10.0\RAQIB.Core.pdb
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.csproj.AssemblyReference.cache
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.GeneratedMSBuildEditorConfig.editorconfig
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.AssemblyInfoInputs.cache
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.AssemblyInfo.cs
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.csproj.CoreCompileInputs.cache
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.sourcelink.json
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.dll
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\refint\RAQIB.Core.dll
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\RAQIB.Core.pdb
+d:\RAQIB\Raqib\RAQIB_API\RAQIB.Core\obj\Release\net10.0\ref\RAQIB.Core.dll

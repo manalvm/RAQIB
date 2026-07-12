@@ -397,38 +397,88 @@ def predict_image(image_path):
     # Dynamic Severity
     # -----------------------
 
+    # -----------------------
+    # Class-aware severity ranges
+    # -----------------------
+    # analyze_road/analyze_building/analyze_trash measure how much of the
+    # *image* looks damaged/cluttered using generic edge/contour heuristics.
+    # Those heuristics don't know what the classifier decided, so on their
+    # own they can (and did) produce contradictions like "Small Trash"
+    # scoring 99% - a genuinely minor issue reading as critical.
+    #
+    # Instead of clamping the raw score with a fixed floor/cap, each
+    # predicted_class owns a valid severity *range*. The raw 0-100 CV score
+    # is linearly rescaled into that range, so the image analysis still
+    # fully determines where exactly the report lands - a barely-cluttered
+    # "Small Trash" image lands near the bottom of its range, a heavily
+    # cluttered one near the top - but the range itself guarantees the
+    # final percentage can never contradict what the predicted_class means.
+    # This is the single source of truth every other part of the app
+    # (frontend, PDF, chatbot) derives its risk label from.
+    SEVERITY_RANGES = {
+        "Normal Road": (0, 10),
+        "Normal Building": (0, 10),
+        "Small Trash": (5, 35),
+        "Big Trash": (40, 100),
+        "Damaged Road": (40, 100),
+        "Damaged Home": (40, 100),
+    }
+
+    def scale_to_range(raw_score: float, bounds: tuple[float, float]) -> float:
+        """Linearly map a 0-100 raw CV score into the class's [min, max] range."""
+        low, high = bounds
+        raw = max(0.0, min(100.0, raw_score))
+        return low + (raw / 100.0) * (high - low)
+
     if predicted_class == "Damaged Road":
 
         metrics = analyze_road(image_path)
         damage_percentage = metrics["damage_percentage"]
-        severity_score = metrics["severity_score"]
+        raw_score = metrics["severity_score"]
 
     elif predicted_class == "Damaged Home":
 
         metrics = analyze_building(image_path)
         damage_percentage = metrics["damage_percentage"]
-        severity_score = metrics["severity_score"]
+        raw_score = metrics["severity_score"]
 
-    elif predicted_class in ["Big Trash", "Small Trash"]:
+    elif predicted_class == "Big Trash":
 
         metrics = analyze_trash(image_path)
         damage_percentage = metrics["debris_percentage"]
-        severity_score = metrics["severity_score"]
+        raw_score = metrics["severity_score"]
+
+    elif predicted_class == "Small Trash":
+
+        metrics = analyze_trash(image_path)
+        damage_percentage = metrics["debris_percentage"]
+        raw_score = metrics["severity_score"]
 
     else:
-
+        # Normal Road / Normal Building: nothing damaged to measure
         metrics = {}
         damage_percentage = 0
-        severity_score = 0
+        raw_score = 0
+
+    severity_score = scale_to_range(raw_score, SEVERITY_RANGES.get(predicted_class, (0, 100)))
+
+    # Keep the metrics dict (shown as extra "تفاصيل التحليل" lines to the
+    # chatbot/UI) in sync with the final, class-aware severity_score, so
+    # nothing downstream ever sees two different severity numbers for the
+    # same report.
+    if metrics:
+        metrics["severity_score"] = round(severity_score, 2)
 
     # Severity label
+    # Four tiers, matching the Arabic levels shown throughout the app:
+    # منعدمة (None) / منخفضة (Low) / متوسطة (Medium) / عالية (High)
+    if severity_score <= 10:
+        severity_label = "None"
 
-
-
-    if severity_score < 40:
+    elif severity_score <= 40:
         severity_label = "Low"
 
-    elif severity_score < 70:
+    elif severity_score <= 70:
         severity_label = "Medium"
 
     else:

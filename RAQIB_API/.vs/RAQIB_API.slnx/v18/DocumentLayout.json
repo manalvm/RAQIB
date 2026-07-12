@@ -27,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{D6F7F54D-58AA-7CC8-63A1-D699CE8FB830}|RAQIB.Infrastructure\\RAQIB.Infrastructure.csproj|solutionrelative:raqib.infrastructure\\services\\imagestorageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Infrastructure\\Migrations\\20260708030937_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:RAQIB.Infrastructure\\Migrations\\20260708030937_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A21DCD50-BF4A-5C90-3717-323E97E682E8}|RAQIB_API\\RAQIB_API.csproj|d:\\raqib\\raqib\\raqib_api\\raqib_api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A21DCD50-BF4A-5C90-3717-323E97E682E8}|RAQIB_API\\RAQIB_API.csproj|solutionrelative:raqib_api\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -69,6 +65,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A21DCD50-BF4A-5C90-3717-323E97E682E8}|RAQIB_API\\RAQIB_API.csproj|d:\\raqib\\raqib\\raqib_api\\raqib_api\\raqib_api.csproj.backup.tmp||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{A21DCD50-BF4A-5C90-3717-323E97E682E8}|RAQIB_API\\RAQIB_API.csproj|solutionrelative:raqib_api\\raqib_api.csproj.backup.tmp||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D6F7F54D-58AA-7CC8-63A1-D699CE8FB830}|RAQIB.Infrastructure\\RAQIB.Infrastructure.csproj|d:\\raqib\\raqib\\raqib_api\\raqib.infrastructure\\migrations\\20260708030937_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D6F7F54D-58AA-7CC8-63A1-D699CE8FB830}|RAQIB.Infrastructure\\RAQIB.Infrastructure.csproj|solutionrelative:raqib.infrastructure\\migrations\\20260708030937_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -103,8 +103,7 @@
               "RelativeToolTip": "RAQIB_API\\Controllers\\ReportsController.cs",
               "ViewState": "AgIAABoBAAAAAAAAAAAiwDMBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T23:37:37.934Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-07T23:37:37.934Z"
             },
             {
               "$type": "Document",
@@ -116,8 +115,7 @@
               "RelativeToolTip": "RAQIB.Infrastructure\\Services\\ImageStorageService.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAA6wCcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T18:58:36.947Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-02T18:58:36.947Z"
             },
             {
               "$type": "Document",
@@ -129,8 +127,7 @@
               "RelativeToolTip": "RAQIB_API\\Program.cs",
               "ViewState": "AgIAAHsAAAAAAAAAAAAAAI4AAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-01T14:59:55.074Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-01T14:59:55.074Z"
             },
             {
               "$type": "Document",
@@ -142,8 +139,7 @@
               "RelativeToolTip": "RAQIB.Infrastructure\\Services\\AiAgentService.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAiwHsAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T21:04:59.592Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-02T21:04:59.592Z"
             },
             {
               "$type": "Document",
@@ -155,12 +151,11 @@
               "RelativeToolTip": "RAQIB_API\\appsettings.json",
               "ViewState": "AgIAAAMAAAAAAAAAAAAkwBAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-07-02T18:49:44.285Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-02T18:49:44.285Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 16,
               "Title": "20260708030937_InitialCreate.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Infrastructure\\Migrations\\20260708030937_InitialCreate.cs",
               "RelativeDocumentMoniker": "RAQIB.Infrastructure\\Migrations\\20260708030937_InitialCreate.cs",
@@ -168,12 +163,11 @@
               "RelativeToolTip": "RAQIB.Infrastructure\\Migrations\\20260708030937_InitialCreate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T03:10:41.107Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T03:10:41.107Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "ReportRepository.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Infrastructure\\Repositories\\ReportRepository.cs",
               "RelativeDocumentMoniker": "RAQIB.Infrastructure\\Repositories\\ReportRepository.cs",
@@ -181,12 +175,11 @@
               "RelativeToolTip": "RAQIB.Infrastructure\\Repositories\\ReportRepository.cs",
               "ViewState": "AgIAAF0AAAAAAAAAAAAqwGYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T23:35:28.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-07T23:35:28.847Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "Dtos.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Core\\DTOs\\Dtos.cs",
               "RelativeDocumentMoniker": "RAQIB.Core\\DTOs\\Dtos.cs",
@@ -194,12 +187,11 @@
               "RelativeToolTip": "RAQIB.Core\\DTOs\\Dtos.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAuwE4AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-07T23:34:12.97Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-07T23:34:12.97Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB_API\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "RAQIB_API\\Controllers\\AdminController.cs",
@@ -207,12 +199,11 @@
               "RelativeToolTip": "RAQIB_API\\Controllers\\AdminController.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAqwE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T18:57:54.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-02T18:57:54.83Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "Report.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Core\\Models\\Report.cs",
               "RelativeDocumentMoniker": "RAQIB.Core\\Models\\Report.cs",
@@ -220,12 +211,11 @@
               "RelativeToolTip": "RAQIB.Core\\Models\\Report.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAwwBEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-06T00:02:17.992Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-06T00:02:17.992Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "IReportRepository.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Core\\Interfaces\\IReportRepository.cs",
               "RelativeDocumentMoniker": "RAQIB.Core\\Interfaces\\IReportRepository.cs",
@@ -233,12 +223,11 @@
               "RelativeToolTip": "RAQIB.Core\\Interfaces\\IReportRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-02T23:57:43.972Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-02T23:57:43.972Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB_API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "RAQIB_API\\Controllers\\AuthController.cs",
@@ -250,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Core\\Models\\User.cs",
               "RelativeDocumentMoniker": "RAQIB.Core\\Models\\User.cs",
@@ -262,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "EmailService.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Infrastructure\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "RAQIB.Infrastructure\\Services\\EmailService.cs",
@@ -274,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "RAQIB_API.csproj.Backup.tmp",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB_API\\RAQIB_API.csproj.Backup.tmp",
               "RelativeDocumentMoniker": "RAQIB_API\\RAQIB_API.csproj.Backup.tmp",
@@ -286,7 +275,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "AppDbContext.cs",
               "DocumentMoniker": "D:\\RAQIB\\Raqib\\RAQIB_API\\RAQIB.Infrastructure\\Data\\AppDbContext.cs",
               "RelativeDocumentMoniker": "RAQIB.Infrastructure\\Data\\AppDbContext.cs",

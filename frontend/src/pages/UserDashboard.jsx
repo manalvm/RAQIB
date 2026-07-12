@@ -42,6 +42,64 @@ const EGYPT_GOVERNORATES = [
   "قنا","شمال سيناء","سوهاج",
 ];
 
+// ── Arabic date + prediction display helpers (kept local to this file) ──
+const AR_MONTHS = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
+
+// "12 يوليو 2026" — Arabic month name, Western digits, no raw DateTime.
+const formatArabicDate = (value) => {
+  if (!value) return "—";
+  const d = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(d.getTime())) return "—";
+  return `${d.getDate()} ${AR_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+};
+
+// Backend PredictedClass values are used as-is — only the displayed Arabic text changes.
+// NOTE: this map only supplies the *type* label/value (what the issue is).
+// It must never be used to decide the risk level — that always comes from
+// the backend's severityScore (see getSeverityDisplay below), so the same
+// report can't show two different risk levels in different places.
+const PREDICTION_DISPLAY = {
+  "Small Trash": { typeLabel: "نوع الحالة", typeValue: "نفايات صغيرة" },
+  "Big Trash": { typeLabel: "نوع الحالة", typeValue: "نفايات كبيرة" },
+  "Normal Building": { typeLabel: "حالة المنزل", typeValue: "المنزل سليم" },
+  "Damaged Home": { typeLabel: "حالة المنزل", typeValue: "المنزل متضرر" },
+  "Normal Road": { typeLabel: "حالة الشارع", typeValue: "الشارع سليم" },
+  "Damaged Road": { typeLabel: "حالة الشارع", typeValue: "الشارع متضرر" },
+};
+const PREDICTION_NORMALIZE = {
+  "SMALL TRASH": "Small Trash", "BIG TRASH": "Big Trash",
+  "NORMAL BUILDINGS": "Normal Building", "NORMAL BUILDING": "Normal Building",
+  "DAMAGED HOME": "Damaged Home", "NORMAL ROAD": "Normal Road", "DAMAGED ROAD": "Damaged Road",
+};
+const getPredictionDisplay = (predictedClass) => {
+  if (!predictedClass) return null;
+  const key = PREDICTION_DISPLAY[predictedClass] ? predictedClass : PREDICTION_NORMALIZE[predictedClass.toUpperCase()];
+  return PREDICTION_DISPLAY[key] || null;
+};
+
+// ── Single source of truth for risk level ──
+// Always derived from severityScore (0=منعدمة 1=منخفضة 2=متوسطة 3=عالية),
+// the same integer the backend computed from the FastAPI severity
+// percentage. Never derive risk from the predicted class name.
+const SEV_RISK_AR = { 0: "منعدمة", 1: "منخفضة", 2: "متوسطة", 3: "عالية" };
+const getSeverityDisplay = (severityScore) => {
+  const score = Number(severityScore ?? 0);
+  return {
+    riskLevel: score >= 3 ? "high" : score === 2 ? "medium" : score === 1 ? "low" : "none",
+    riskValue: SEV_RISK_AR[score] ?? SEV_RISK_AR[0],
+  };
+};
+
+// High risk = severityScore 3 (عالية) — always from the backend score.
+const isHighRisk = (report) => Number(report?.severityScore ?? 0) >= 3;
+
+// High-risk reports first, most recent first within each group (requirement #3).
+const sortByRiskThenDate = (list) => [...list].sort((a, b) => {
+  const riskDiff = (isHighRisk(b) ? 1 : 0) - (isHighRisk(a) ? 1 : 0);
+  if (riskDiff !== 0) return riskDiff;
+  return new Date(b.createdAt) - new Date(a.createdAt);
+});
+
 const pinIcon = L.divIcon({
   html: `<div style="width:14px;height:14px;border-radius:50%;background:${C.orange};
           border:2px solid white;box-shadow:0 0 8px ${C.orange}88"></div>`,
@@ -563,15 +621,24 @@ export default function UserDashboard() {
                       <div className={`rq-bubble ${m.role==="user"?"u":"a"} ${isRes?"res":""}`}>
                         {m.image && <img src={m.image} alt="" className="rq-msg-img"/>}
                         {m.location && <p className="rq-msg-loc">📍 {m.location}</p>}
-                        {isRes && (
-                          <div className="rq-res-hdr">
-                            <span>{SEV_ICON[m.severityScore]}</span>
-                            <span className="rq-res-class" style={{color:SEV_COLOR[m.severityScore]}}>
-                              {CLASS_AR[m.class] || m.class}
-                            </span>
-                            <span className="rq-res-conf">{(m.confidence*100).toFixed(0)}% ثقة</span>
-                          </div>
-                        )}
+                        {isRes && (() => {
+                          const disp = getPredictionDisplay(m.class);
+                          const sev = getSeverityDisplay(m.severityScore);
+                          return (
+                            <div className="rq-res-hdr" style={{flexDirection:"column",alignItems:"flex-start",gap:2}}>
+                              <div style={{display:"flex",alignItems:"center",gap:6}}>
+                                <span>{SEV_ICON[m.severityScore]}</span>
+                                <span className="rq-res-class" style={{color:SEV_COLOR[m.severityScore]}}>
+                                  {disp ? disp.typeValue : (CLASS_AR[m.class] || m.class)}
+                                </span>
+                                <span className="rq-res-conf">{(m.confidence*100).toFixed(0)}% ثقة</span>
+                              </div>
+                              <span style={{fontSize:12,color:sev.riskLevel==="high"?C.critical:C.orange,fontWeight:700}}>
+                                مستوى الخطورة: {sev.riskValue}
+                              </span>
+                            </div>
+                          );
+                        })()}
                         <p className="rq-msg-txt">{m.text}</p>
                       </div>
                     </div>
@@ -610,30 +677,37 @@ export default function UserDashboard() {
           {activeTab === "history" && (
             <div className="rq-scroll" dir="rtl">
               {history.length === 0 && <p className="rq-hist-empty">لا توجد بلاغات بعد</p>}
-              {history.map(r => (
-                <div key={r.id} className="rq-hist-card" onClick={() => openReportChat(r.id)}>
-                  <div className="rq-hist-top">
-                    <span className="rq-hist-class" style={{color:SEV_COLOR[r.severityScore]}}>
-                      {SEV_ICON[r.severityScore]} {CLASS_AR[r.predictedClass] || r.predictedClass || "—"}
-                    </span>
-                    <div style={{display:"flex",alignItems:"center",gap:8}}>
-                      <span className="rq-hist-status">
-                        {CLASS_AR[r.status] || r.status}
+              {sortByRiskThenDate(history).map(r => {
+                const disp = getPredictionDisplay(r.predictedClass);
+                const sev = getSeverityDisplay(r.severityScore);
+                return (
+                  <div key={r.id} className="rq-hist-card" onClick={() => openReportChat(r.id)}>
+                    <div className="rq-hist-top">
+                      <span className="rq-hist-class" style={{color:SEV_COLOR[r.severityScore]}}>
+                        {SEV_ICON[r.severityScore]} {disp ? disp.typeValue : (CLASS_AR[r.predictedClass] || r.predictedClass || "—")}
                       </span>
-                      <span className="rq-hist-chat-btn">فتح المحادثة </span>
+                      <div style={{display:"flex",alignItems:"center",gap:8}}>
+                        <span className="rq-hist-status" style={{color:sev.riskLevel==="high"?C.critical:C.orange}}>
+                          {sev.riskValue}
+                        </span>
+                        <span className="rq-hist-status">
+                          {CLASS_AR[r.status] || r.status}
+                        </span>
+                        <span className="rq-hist-chat-btn">فتح المحادثة </span>
+                      </div>
                     </div>
-                  </div>
-                  {(r.governorate || r.area || r.street) && (
-                    <p className="rq-hist-loc">
-                      📍 {[r.street, r.area, r.governorate].filter(Boolean).join("، ")}
+                    {(r.governorate || r.area || r.street) && (
+                      <p className="rq-hist-loc">
+                        📍 {[r.street, r.area, r.governorate].filter(Boolean).join("، ")}
+                      </p>
+                    )}
+                    <p className="rq-hist-msg">{r.message}</p>
+                    <p className="rq-hist-date">
+                      {formatArabicDate(r.createdAt)}
                     </p>
-                  )}
-                  <p className="rq-hist-msg">{r.message}</p>
-                  <p className="rq-hist-date">
-                    {new Date(r.createdAt).toLocaleDateString("ar-EG", {dateStyle:"medium"})}
-                  </p>
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
@@ -657,9 +731,25 @@ export default function UserDashboard() {
                             pathOptions={{color:SEV_COLOR[p.severityScore],fillColor:SEV_COLOR[p.severityScore],fillOpacity:.4,weight:2}}>
                 <Popup>
                   <div dir="rtl">
-                    <p style={{fontWeight:700,margin:0}}>{CLASS_AR[p.predictedClass]||p.predictedClass}</p>
-                    <p style={{margin:"2px 0 0"}}>الخطورة: {p.severityLabel}</p>
-                    {p.governorate && <p style={{margin:"2px 0 0"}}>المحافظة: {p.governorate}</p>}
+                    {(() => {
+                      const disp = getPredictionDisplay(p.predictedClass);
+                      const sev = getSeverityDisplay(p.severityScore);
+                      return (
+                        <>
+                          {disp ? (
+                            <>
+                              <p style={{margin:0,fontSize:11,opacity:.75}}>{disp.typeLabel}</p>
+                              <p style={{fontWeight:700,margin:"0 0 6px"}}>{disp.typeValue}</p>
+                            </>
+                          ) : (
+                            <p style={{fontWeight:700,margin:"0 0 6px"}}>{CLASS_AR[p.predictedClass]||p.predictedClass}</p>
+                          )}
+                          <p style={{margin:0,fontSize:11,opacity:.75}}>مستوى الخطورة</p>
+                          <p style={{fontWeight:700,margin:0,color:sev.riskLevel==="high"?C.critical:C.orange}}>{sev.riskValue}</p>
+                        </>
+                      );
+                    })()}
+                    {p.governorate && <p style={{margin:"6px 0 0"}}>المحافظة: {p.governorate}</p>}
                     {p.area && <p style={{margin:"2px 0 0"}}>المنطقة: {p.area}</p>}
                     <p style={{margin:"2px 0 0"}}>عدد البلاغات في المنطقة: {p.countInArea}</p>
                   </div>

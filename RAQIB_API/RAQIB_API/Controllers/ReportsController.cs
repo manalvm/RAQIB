@@ -207,12 +207,16 @@ public class ReportsController : ControllerBase
     confidence_score = report.Confidence * 100,
     damage_percentage = report.DamagePercentage,
     severity_score = report.AiSeverityScore,
-    severity_label = report.SeverityLabel switch
+    // مشتقة من SeverityScore (نفس المصدر الوحيد للمعلومة المستخدم في
+    // الداشبورد والخريطة وتقرير الـ PDF) بدل مطابقة نص عربي، عشان
+    // مستوى الخطورة اللي بيوصف للشات يكون مطابق دايمًا لأي مكان تاني
+    // بالتطبيق، بما فيها مستوى "منعدمة" اللي كان بيترجم غلط لـ "Low".
+    severity_label = report.SeverityScore switch
     {
-        "عالية" => "High",
-        "متوسطة" => "Medium",
-        "منخفضة" => "Low",
-        _ => "Low"
+        3 => "High",
+        2 => "Medium",
+        1 => "Low",
+        _ => "None"
     },
 
     governorate = report.Governorate,
